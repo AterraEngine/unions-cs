@@ -4,6 +4,7 @@
 using AterraEngine.Unions;
 using AterraEngine.Unions.Generators;
 using CodeOfChaos.GeneratorTools;
+using CodeOfChaos.Testing.TUnit;
 using JetBrains.Annotations;
 using Microsoft.CodeAnalysis;
 using Assembly=System.Reflection.Assembly;
@@ -12,8 +13,8 @@ namespace Tests.AterraEngine.Unions.Generators;
 // ---------------------------------------------------------------------------------------------------------------------
 // Code
 // ---------------------------------------------------------------------------------------------------------------------
-public class UnionGeneratorTests : IncrementalGeneratorTest<UnionGenerator> {
-    protected override Assembly[] ReferenceAssemblies { get; } = [
+public class UnionGeneratorTests {
+    private static Assembly[] ReferenceAssemblies { get; } = [
         typeof(object).Assembly,
         typeof(ValueTuple).Assembly,
         typeof(Attribute).Assembly,
@@ -27,28 +28,26 @@ public class UnionGeneratorTests : IncrementalGeneratorTest<UnionGenerator> {
         typeof(GeneratorStringBuilder).Assembly
     ];
 
-    // I hae no Clue why this is not working.
-    // It is working in production, but in these tests, it just breaks
-    // I might be something related to the IncrementalGeneratorTest<> configuration, but I have no clue.
     [Test]
-    [Arguments(TrueOrFalseInput, TrueOrFalseOutput)]
-    [Arguments(TupleOrFalseInput, TupleOrFalseOutput)]
-    [Arguments(SucceededOrFalseInput, SucceededOrFalseOutput)]
-    [Arguments(NothingOrSomethingInput, NothingOrSomethingOutput)]
-    [Arguments(TrueFalseOrAliasInput, TrueFalseOrAliasOutput)]
-    [Arguments(UnionExtraGenerateFromInput, UnionExtraGenerateFromOutput)]
-    [Arguments(UnionExtraGenerateAsValueInput, UnionExtraGenerateAsValueOutput)]
-    public async Task TestText(string inputText, string expectedOutput) {
+    [Arguments(TrueOrFalseInput, TrueOrFalseOutput, "TrueOrFalse_Union.g.cs")]
+    [Arguments(TupleOrFalseInput, TupleOrFalseOutput, "TupleOrFalse_Union.g.cs")]
+    [Arguments(SucceededOrFalseInput, SucceededOrFalseOutput, "SucceededOrFalse_Union.g.cs")]
+    [Arguments(NothingOrSomethingInput, NothingOrSomethingOutput, "NothingOrSomething_Union.g.cs")]
+    [Arguments(TrueFalseOrAliasInput, TrueFalseOrAliasOutput, "TrueFalseOrAlias_Union.g.cs")]
+    [Arguments(UnionExtraGenerateFromInput, UnionExtraGenerateFromOutput, "TupleOrFalse_Union.g.cs")]
+    [Arguments(UnionExtraGenerateAsValueInput, UnionExtraGenerateAsValueOutput, "TupleOrFalse_Union.g.cs")]
+    public async Task TestText(string inputText, string expectedOutput, string fileName) {
+        // Arrange
+        RoslynGeneratorRunner runner = await new RoslynCompilationRunner()
+            .AddReferences(ReferenceAssemblies)
+            .AddDocument("Test.cs", inputText)
+            .GetGeneratorRunnerAsync();
+        
+        // Act
+        GeneratorDriverRunResult runResult = runner.AddGenerator<UnionGenerator>();
 
-        GeneratorDriverRunResult runResult = await RunGeneratorAsync(inputText);
-
-        GeneratedSourceResult? generatedSource = runResult.Results
-            .SelectMany(result => result.GeneratedSources)
-            .SingleOrDefault(result => result.HintName.EndsWith("_Union.g.cs"));
-
-        await Assert.That(generatedSource?.SourceText).IsNotNull();
-        await Assert.That(generatedSource?.SourceText.ToString())
-            .IsEqualTo(expectedOutput).IgnoringWhitespace().WithTrimming();
+        // Assert
+        await Assert.That(runResult).HasSourceTextEqualTo(fileName, expectedOutput, ignoreWhiteSpace:true, withTrimming:true);
     }
 
     #region Original Test
