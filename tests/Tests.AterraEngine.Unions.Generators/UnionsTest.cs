@@ -47,7 +47,12 @@ public class UnionGeneratorTests {
         GeneratorDriverRunResult runResult = runner.AddGenerator<UnionGenerator>();
 
         // Assert
-        await Assert.That(runResult).HasSourceTextEqualTo(fileName, expectedOutput, ignoreWhiteSpace:true, withTrimming:true);
+        await Assert.That(runResult).HasSourceTextEqualTo(
+            fileName,
+            expectedOutput,
+            ignoreWhiteSpace:true,
+            withTrimming:true
+        );
     }
 
     #region Original Test
