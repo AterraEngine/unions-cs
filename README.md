@@ -176,7 +176,7 @@ This is due to the fact that a lot of the functionality of this discriminated un
 
 The following is a result of the benchmarks found
 at [Benchmarks.AterraEngine.Unions](tests/Benchmarks.AterraEngine.Unions).
-Benchmark results were last updated for version `2.5.0`
+Benchmark results were last updated for version `3.10.0`
 
 > BenchmarkDotNet v0.14.0, Windows 11 (10.0.22631.4541/23H2/2023Update/SunValley3)
 >
@@ -190,25 +190,25 @@ Benchmark results were last updated for version `2.5.0`
 
 #### Normal benchmarks:
 
-| Method                                                |       Mean |     Error |    StdDev |     Median | Ratio | RatioSD |   Gen0 | Allocated | Alloc Ratio |
-|-------------------------------------------------------|-----------:|----------:|----------:|-----------:|------:|--------:|-------:|----------:|------------:|
-| AterraEngineUnions_UnionT8_TryGetAs                   |  0.0385 ns | 0.0175 ns | 0.0515 ns |  0.0000 ns | 0.006 |    0.01 |      - |         - |          NA |
-| AterraEngineUnions_UnionT8_SwitchCase_Value           |  0.1455 ns | 0.0648 ns | 0.1910 ns |  0.0365 ns | 0.024 |    0.03 |      - |         - |          NA |
-| AterraEngineUnions_SuccessOrFailure_SwitchCase_Struct |  0.1846 ns | 0.0243 ns | 0.0385 ns |  0.1727 ns | 0.031 |    0.01 |      - |         - |          NA |
-| AterraEngineUnions_SuccessOrFailure_SwitchCase_Value  |  5.1345 ns | 0.1856 ns | 0.5472 ns |  5.2863 ns | 0.852 |    0.13 | 0.0014 |      24 B |          NA |
-| AterraEngineUnions_TrueFalse_TryGetAsTrue             |  6.0924 ns | 0.2099 ns | 0.6189 ns |  6.4790 ns | 1.011 |    0.15 |      - |         - |          NA |
-| OneOf_SuccessOrFailure_SwitchCase_Value               |  6.5773 ns | 0.1503 ns | 0.3906 ns |  6.4878 ns | 1.091 |    0.13 | 0.0014 |      24 B |          NA |
-| OneOfTrueFalse_TryGetAsTrue                           | 11.1220 ns | 0.3958 ns | 1.1669 ns | 10.7038 ns | 1.845 |    0.28 | 0.0038 |      64 B |          NA |
-| OneOf_OneOfT8_SwitchCase_Value                        | 12.0302 ns | 0.3684 ns | 1.0689 ns | 11.6413 ns | 1.996 |    0.28 | 0.0038 |      64 B |          NA |
-| OneOf_OneOfT8_TryGetAs                                | 15.9198 ns | 0.5454 ns | 1.6082 ns | 15.0587 ns | 2.641 |    0.39 | 0.0038 |      64 B |          NA |
-| Dunet_TrueFalse_MatchTrue                             | 31.5921 ns | 1.3279 ns | 3.9153 ns | 31.0064 ns | 5.242 |    0.86 | 0.0105 |     176 B |          NA |
+| Method                                                |       Mean |     Error |    StdDev | Ratio | RatioSD |   Gen0 | Allocated | Alloc Ratio |
+|-------------------------------------------------------|-----------:|----------:|----------:|------:|--------:|-------:|----------:|------------:|
+| AterraEngineUnions_UnionT8_TryGetAs                   |  0.0000 ns | 0.0000 ns | 0.0000 ns | 0.000 |    0.00 |      - |         - |          NA |
+| AterraEngineUnions_UnionT8_SwitchCase_Value           |  0.0539 ns | 0.0368 ns | 0.0344 ns | 0.010 |    0.01 |      - |         - |          NA |
+| AterraEngineUnions_SuccessOrFailure_SwitchCase_Struct |  0.1732 ns | 0.0101 ns | 0.0094 ns | 0.032 |    0.00 |      - |         - |          NA |
+| AterraEngineUnions_SuccessOrFailure_SwitchCase_Value  |  4.7191 ns | 0.0976 ns | 0.0913 ns | 0.862 |    0.02 | 0.0014 |      24 B |          NA |
+| AterraEngineUnions_TrueFalse_TryGetAsTrue             |  5.4756 ns | 0.0474 ns | 0.0444 ns | 1.000 |    0.01 |      - |         - |          NA |
+| OneOf_SuccessOrFailure_SwitchCase_Value               |  7.2725 ns | 0.1632 ns | 0.2004 ns | 1.328 |    0.04 | 0.0014 |      24 B |          NA |
+| OneOfTrueFalse_TryGetAsTrue                           | 11.2695 ns | 0.2091 ns | 0.1956 ns | 2.058 |    0.04 | 0.0038 |      64 B |          NA |
+| OneOf_OneOfT8_SwitchCase_Value                        | 11.9177 ns | 0.2238 ns | 0.1984 ns | 2.177 |    0.04 | 0.0038 |      64 B |          NA |
+| OneOf_OneOfT8_TryGetAs                                | 15.4805 ns | 0.3515 ns | 0.3288 ns | 2.827 |    0.06 | 0.0038 |      64 B |          NA |
+| Dunet_TrueFalse_MatchTrue                             | 30.9437 ns | 0.6507 ns | 0.9121 ns | 5.652 |    0.17 | 0.0105 |     176 B |          NA |
 
 #### Enhanced benchmarks
 
-| Method                                               |      Mean |     Error |    StdDev |    Median |   Gen0 | Allocated |
-|------------------------------------------------------|----------:|----------:|----------:|----------:|-------:|----------:|
-| AterraEngineUnions_UnionT8_SwitchCase_Value_Enhanced |  8.931 ns | 0.2689 ns | 0.7927 ns |  8.781 ns |      - |         - |
-| AterraEngineUnions_UnionT8_TryGetAs_Enhanced         | 16.319 ns | 0.4596 ns | 1.3553 ns | 15.793 ns |      - |         - |
-| OneOf_OneOfT8_SwitchCase_Value_Enhanced              | 21.815 ns | 0.7018 ns | 2.0692 ns | 22.237 ns | 0.0038 |      64 B |
-| OneOf_OneOfT8_TryGetAs_Enhanced                      | 33.700 ns | 1.0868 ns | 3.2044 ns | 35.017 ns | 0.0038 |      64 B |
+| Method                                               |      Mean |     Error |    StdDev |   Gen0 | Allocated |
+|------------------------------------------------------|----------:|----------:|----------:|-------:|----------:|
+| AterraEngineUnions_UnionT8_SwitchCase_Value_Enhanced |  8.179 ns | 0.1608 ns | 0.2550 ns |      - |         - |
+| AterraEngineUnions_UnionT8_TryGetAs_Enhanced         | 15.285 ns | 0.2901 ns | 0.4252 ns |      - |         - |
+| OneOf_OneOfT8_SwitchCase_Value_Enhanced              | 18.157 ns | 0.1611 ns | 0.1258 ns | 0.0038 |      64 B |
+| OneOf_OneOfT8_TryGetAs_Enhanced                      | 28.218 ns | 0.3147 ns | 0.2943 ns | 0.0038 |      64 B |
 
