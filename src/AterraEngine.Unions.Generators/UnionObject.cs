@@ -48,7 +48,7 @@ public readonly struct UnionObject(string structName, string nameSpace, Dictiona
     public bool HasFlagGenerateFrom() => (extraGeneratorFlags & 0b1) != 0;
     public bool HasFlagGenerateAsValue() => (extraGeneratorFlags & 0b10) != 0;
 
-    public bool IsValidGenerateAsValue(ITypeSymbol typeSymbol, out bool isValues, out string valueTypeName, out string notNullWhen, out string nullable) {
+    public static bool IsValidGenerateAsValue(ITypeSymbol typeSymbol, out bool isValues, out string valueTypeName, out string notNullWhen, out string nullable) {
         // Check if the typeSymbol inherits from IValue<T> or IValues<T>
         isValues = false;
         valueTypeName = string.Empty;

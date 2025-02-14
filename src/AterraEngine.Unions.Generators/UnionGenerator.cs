@@ -237,7 +237,7 @@ public class UnionGenerator : IIncrementalGenerator {
                     """);
             }
 
-            if (unionObject.HasFlagGenerateAsValue() && unionObject.IsValidGenerateAsValue(sv.TypeSymbol, out bool isValues, out string valueTypeName, out string notNullWhen, out string nullable)) {
+            if (unionObject.HasFlagGenerateAsValue() && UnionObject.IsValidGenerateAsValue(sv.TypeSymbol, out bool isValues, out string valueTypeName, out string notNullWhen, out string nullable)) {
                 string s = isValues ? "s" : string.Empty;
                 builder.AppendBodyIndented($$"""
                     public bool TryGet{{sv.AsAlias}}Value{{s}}({{notNullWhen}}out {{valueTypeName}}{{nullable}} value{{s}}) {
