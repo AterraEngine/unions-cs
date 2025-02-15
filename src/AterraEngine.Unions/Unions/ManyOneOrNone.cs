@@ -19,6 +19,7 @@ namespace AterraEngine.Unions;
 ///     - If the array contains a single value, the structure represents <see cref="One{TValue}" />.
 ///     - If the array contains multiple values, the structure represents <see cref="Many{TValue}" />.
 /// </remarks>
+[UnionExtra(UnionExtra.GenerateAsValue)]
 public readonly partial struct ManyOneOrNone<TValue>() : IUnion<Many<TValue>, One<TValue>, None> {
     /// <summary>
     ///     Defines an implicit conversion operator for the <see cref="ManyOneOrNone{TValue}" /> union type.

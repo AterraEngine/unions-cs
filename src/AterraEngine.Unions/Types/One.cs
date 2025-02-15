@@ -11,4 +11,6 @@ namespace AterraEngine.Unions;
 /// <typeparam name="T">
 ///     The type of the value contained within the union.
 /// </typeparam>
-public readonly record struct One<T>(T Value) : IValue<T>;
+public readonly record struct One<T>(T Value) : IValue<T> {
+    public static readonly One<T> Empty = new();
+}

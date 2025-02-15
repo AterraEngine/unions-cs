@@ -1,17 +1,20 @@
 // ---------------------------------------------------------------------------------------------------------------------
 // Imports
 // ---------------------------------------------------------------------------------------------------------------------
-namespace AterraEngine.Unions;
+using AterraEngine.Unions;
+
+namespace Tests.AterraEngine.Unions.Types;
 // ---------------------------------------------------------------------------------------------------------------------
 // Code
 // ---------------------------------------------------------------------------------------------------------------------
-/// <summary>
-///     Represents the absence of a value.
-/// </summary>
-/// <remarks>
-///     This struct is used in union types to denote a state where no value is present.
-///     Commonly used in scenarios requiring explicit none semantics.
-/// </remarks>
-public readonly struct None {
-    public static readonly None Empty = new();
+public class NoneTest {
+    [Test]
+    public async Task NoneEmpty_IsSame() {
+        // Arrange
+        var none1 = None.Empty;
+        var none2 = None.Empty;
+        
+        // Act &  Assert
+        await Assert.That(none1).IsEqualTo(none2);
+    }
 }

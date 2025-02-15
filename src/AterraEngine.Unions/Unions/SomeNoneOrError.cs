@@ -15,4 +15,5 @@ namespace AterraEngine.Unions;
 /// </summary>
 /// <typeparam name="TValue">The type encapsulated by the Some state, representing a successful value.</typeparam>
 /// <typeparam name="TError">The type encapsulated by the Error state, representing an error case.</typeparam>
+[UnionExtra(UnionExtra.GenerateAsValue)]
 public readonly partial struct SomeNoneOrError<TValue, TError>() : IUnion<Some<TValue>, None, Error<TError>>;

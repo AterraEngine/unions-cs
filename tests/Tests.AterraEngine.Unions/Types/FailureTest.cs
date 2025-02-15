@@ -7,24 +7,24 @@ namespace Tests.AterraEngine.Unions.Types;
 // ---------------------------------------------------------------------------------------------------------------------
 // Code
 // ---------------------------------------------------------------------------------------------------------------------
-public class ErrorTest {
+public class FailureTest {
     [Test]
-    public async Task ErrorEmpty_IsSame() {
+    public async Task FailureEmpty_IsSame() {
         // Arrange
-        var error1 = Error.Empty;
-        var error2 = Error.Empty;
+        var failure1 = Failure.Empty;
+        var failure2 = Failure.Empty;
         
         // Act &  Assert
-        await Assert.That(error1).IsEqualTo(error2);
+        await Assert.That(failure1).IsEqualTo(failure2);
     }
 
     [Test]
-    public async Task GenericErrorEmpty_IsSame() {
+    public async Task GenericFailureEmpty_IsSame() {
         // Arrange
-        var error1 = Error<string>.Empty;
-        var error2 = Error<string>.Empty;
+        var failure1 = Failure<string>.Empty;
+        var failure2 = Failure<string>.Empty;
         
         // Act &  Assert
-        await Assert.That(error1).IsEqualTo(error2);
+        await Assert.That(failure1).IsEqualTo(failure2);
     }
 }

@@ -21,6 +21,7 @@ namespace AterraEngine.Unions;
 /// </remarks>
 /// <seealso cref="Some{T}" />
 /// <seealso cref="None" />
+[UnionExtra(UnionExtra.GenerateAsValue)]
 public readonly partial struct SomeOrNone<T>() : IUnion<Some<T>, None> {
     /// <summary>
     ///     Defines an implicit conversion operator for converting a nullable array of type <typeparamref name="T" />

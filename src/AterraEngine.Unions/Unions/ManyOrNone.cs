@@ -19,6 +19,7 @@ namespace AterraEngine.Unions;
 ///     Null or empty arrays are converted to <see cref="None" />, while non-empty arrays are converted to
 ///     <see cref="Many{T}" />.
 /// </example>
+[UnionExtra(UnionExtra.GenerateAsValue)]
 public readonly partial struct ManyOrNone<T>() : IUnion<Many<T>, None> {
     /// <summary>
     ///     Implicit conversion operator to covert an array of type <typeparamref name="T" /> to a <see cref="ManyOrNone{T}" />

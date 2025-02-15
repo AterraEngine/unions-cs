@@ -20,6 +20,7 @@ namespace AterraEngine.Unions;
 /// - The Error state indicates an operation failure or invalid state, encapsulating an error value
 /// using the <see cref="Error{T}" /> type.
 /// </remarks>
+[UnionExtra(UnionExtra.GenerateAsValue)]
 public readonly partial struct ManyNoneOrError<TValue, TError>() : IUnion<Many<TValue>, None, Error<TError>>;
 
 /// <summary>
@@ -36,4 +37,5 @@ public readonly partial struct ManyNoneOrError<TValue, TError>() : IUnion<Many<T
 /// - The None state denotes absence of values using the <see cref="None" /> structure.
 /// - The Error state encapsulates an error or exceptional scenario using the <see cref="Error{T}" /> structure.
 /// </remarks>
+[UnionExtra(UnionExtra.GenerateAsValue)]
 public readonly partial struct ManyNoneOrError<TValue>() : IUnion<Many<TValue>, None, Error<string>>;

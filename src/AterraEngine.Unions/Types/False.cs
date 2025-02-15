@@ -23,4 +23,7 @@ public readonly struct False {
     ///     will evaluate to <c>false</c> when used in a boolean context.
     /// </remarks>
     public static implicit operator bool(False _) => false;
+    public static implicit operator False(bool value) => value 
+        ? throw new InvalidOperationException("Cannot convert a boolean value to a False instance.")
+        : new False();
 }

@@ -7,24 +7,30 @@ namespace Tests.AterraEngine.Unions.Types;
 // ---------------------------------------------------------------------------------------------------------------------
 // Code
 // ---------------------------------------------------------------------------------------------------------------------
-public class ErrorTest {
+public class TrueTest {
     [Test]
-    public async Task ErrorEmpty_IsSame() {
+    public async Task True_ToBool() {
         // Arrange
-        var error1 = Error.Empty;
-        var error2 = Error.Empty;
+        bool value = new True(); 
         
         // Act &  Assert
-        await Assert.That(error1).IsEqualTo(error2);
+        await Assert.That(value).IsTrue();
     }
 
     [Test]
-    public async Task GenericErrorEmpty_IsSame() {
+    public async Task Bool_ToTrue() {
         // Arrange
-        var error1 = Error<string>.Empty;
-        var error2 = Error<string>.Empty;
+        True value = true; 
         
         // Act &  Assert
-        await Assert.That(error1).IsEqualTo(error2);
+        await Assert.That(value).IsDefault();
+    }
+    
+    [Test]
+    public async Task False_ToTrue_Fails() {
+        await Assert.ThrowsAsync<InvalidOperationException>(() => {
+            True value = false;
+            return Task.FromResult(value);
+        });
     }
 }

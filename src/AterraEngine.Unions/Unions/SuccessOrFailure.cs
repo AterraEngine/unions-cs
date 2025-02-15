@@ -21,6 +21,7 @@ namespace AterraEngine.Unions;
 ///     The struct also supports checking whether the state represents success or failure, and retrieving the corresponding
 ///     value.
 /// </remarks>
+[UnionExtra(UnionExtra.GenerateAsValue)]
 public readonly partial struct SuccessOrFailure<TSuccess, TFailure>() : IUnion<Success<TSuccess>, Failure<TFailure>>, ISuccessOrFailure<TSuccess, TFailure> {
     /// <summary>
     ///     Defines implicit operators for the <see cref="SuccessOrFailure{TSuccess, TFailure}" /> struct,
@@ -65,38 +66,6 @@ public readonly partial struct SuccessOrFailure<TSuccess, TFailure>() : IUnion<S
     ///     in conditional checks. A successful state evaluates to true, while a failure state evaluates to false.
     /// </remarks>
     public static implicit operator bool(SuccessOrFailure<TSuccess, TFailure> successOrFailure) => successOrFailure.IsSuccess;
-
-    /// <summary>
-    ///     Attempts to retrieve the value stored in the success case of the union, if it is a success.
-    /// </summary>
-    /// <param name="value">
-    ///     When this method returns, contains the success value if the union represents a success; otherwise,
-    ///     the default value of <typeparamref name="TSuccess" />.
-    /// </param>
-    /// <returns>True if the union is a success and contains a valid success value; otherwise, false.</returns>
-    public bool TryGetAsSuccessValue([NotNullWhen(true)] out TSuccess? value) {
-        value = default;
-        if (!IsSuccess) return false;
-
-        value = AsSuccess.Value;
-        return value is not null;
-    }
-
-    /// <summary>
-    ///     Attempts to retrieve the value of the instance as a failure value if it represents a failure.
-    /// </summary>
-    /// <param name="value">
-    ///     When this method returns, contains the failure value if the instance represents a failure;
-    ///     otherwise, the default value of <typeparamref name="TFailure" />.
-    /// </param>
-    /// <returns>true if the instance represents a failure; otherwise, false.</returns>
-    public bool TryGetAsFailureValue([NotNullWhen(true)] out TFailure? value) {
-        value = default;
-        if (!IsFailure) return false;
-
-        value = AsFailure.Value;
-        return value is not null;
-    }
 }
 
 /// <summary>
@@ -104,6 +73,7 @@ public readonly partial struct SuccessOrFailure<TSuccess, TFailure>() : IUnion<S
 /// </summary>
 /// <typeparam name="TSuccess">The type of the success value.</typeparam>
 [UnionAliases(null, "Failure")]
+[UnionExtra(UnionExtra.GenerateAsValue)]
 public readonly partial struct SuccessOrFailure<TSuccess>() : IUnion<Success<TSuccess>, Failure<string>>, ISuccessOrFailure<TSuccess> {
     /// <summary>
     ///     Defines an implicit conversion from a value of type <typeparamref name="TSuccess" /> to a
@@ -134,39 +104,6 @@ public readonly partial struct SuccessOrFailure<TSuccess>() : IUnion<Success<TSu
     ///     Returns <c>true</c> if the instance represents a success; otherwise, returns <c>false</c>.
     /// </returns>
     public static implicit operator bool(SuccessOrFailure<TSuccess> successOrFailure) => successOrFailure.IsSuccess;
-
-    /// <summary>
-    ///     Attempts to extract the success value from the current instance if it represents a success case.
-    /// </summary>
-    /// <param name="value">
-    ///     An output parameter that will hold the success value if the current instance represents a success case; otherwise,
-    ///     it will be set to its default value.
-    /// </param>
-    /// <returns>
-    ///     A boolean value indicating whether the current instance represents a success case.
-    /// </returns>
-    public bool TryGetAsSuccessValue([NotNullWhen(true)] out TSuccess? value) {
-        value = default;
-        if (!IsSuccess) return false;
-
-        value = AsSuccess.Value;
-        return value is not null;
-    }
-
-    /// <summary>
-    ///     Attempts to extract the failure value from the current instance.
-    /// </summary>
-    /// <param name="value">If the operation succeeds, this will contain the failure value; otherwise, it will be null.</param>
-    /// <returns>
-    ///     True if the current instance represents a failure and the failure value was extracted; otherwise, false.
-    /// </returns>
-    public bool TryGetAsFailureValue([NotNullWhen(true)] out string? value) {
-        value = default;
-        if (!IsFailure) return false;
-
-        value = AsFailure.Value;
-        return true;
-    }
 }
 
 /// <summary>
@@ -178,6 +115,7 @@ public readonly partial struct SuccessOrFailure<TSuccess>() : IUnion<Success<TSu
 ///     two mutually exclusive outcomes.
 /// </remarks>
 [UnionAliases(null, "Failure")]
+[UnionExtra(UnionExtra.GenerateAsValue)]
 public readonly partial struct SuccessOrFailure() : IUnion<Success, Failure<string>> {
     /// <summary>
     ///     Defines an implicit conversion operator that converts a <see cref="string" /> to a <see cref="SuccessOrFailure" />
@@ -200,20 +138,4 @@ public readonly partial struct SuccessOrFailure() : IUnion<Success, Failure<stri
     ///     in a boolean context, where <c>true</c> indicates a successful state and <c>false</c> signifies a failure state.
     /// </remarks>
     public static implicit operator bool(SuccessOrFailure successOrFailure) => successOrFailure.IsSuccess;
-
-    /// <summary>
-    ///     Attempts to retrieve the failure value from the current instance if it represents a failure.
-    /// </summary>
-    /// <param name="value">When the method returns, contains the failure value if the instance is a failure; otherwise, null.</param>
-    /// <returns>
-    ///     True if the current instance represents a failure and the failure value was successfully retrieved; otherwise,
-    ///     false.
-    /// </returns>
-    public bool TryGetAsFailureValue([NotNullWhen(true)] out string? value) {
-        value = default;
-        if (!IsFailure) return false;
-
-        value = AsFailure.Value;
-        return true;
-    }
 }

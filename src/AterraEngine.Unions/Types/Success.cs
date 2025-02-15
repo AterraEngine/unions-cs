@@ -13,7 +13,9 @@ namespace AterraEngine.Unions;
 ///     in scenarios where success needs to be explicitly communicated or
 ///     differentiated from other outcomes.
 /// </remarks>
-public readonly struct Success;
+public readonly struct Success {
+    public static readonly Success Empty = new();
+}
 
 /// <summary>
 ///     Represents a successful result. It is used as a type carrier for values indicative of successful states or
@@ -22,4 +24,6 @@ public readonly struct Success;
 /// <typeparam name="T">
 ///     The type of the value encapsulated by the success result.
 /// </typeparam>
-public readonly record struct Success<T>(T Value) : IValue<T>;
+public readonly record struct Success<T>(T Value) : IValue<T> {
+    public static readonly Success<T> Empty = new();
+}

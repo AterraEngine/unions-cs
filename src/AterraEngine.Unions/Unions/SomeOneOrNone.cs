@@ -19,6 +19,7 @@ namespace AterraEngine.Unions;
 ///     - <see cref="One{T}" /> if the array contains a single element.
 ///     - <see cref="Some{T}" /> if the array contains more than one element.
 /// </remarks>
+[UnionExtra(UnionExtra.GenerateAsValue)]
 public readonly partial struct SomeOneOrNone<T>() : IUnion<Some<T>, One<T>, None> {
     /// <summary>
     ///     Provides an implicit conversion from an array of type <typeparamref name="T" /> to a

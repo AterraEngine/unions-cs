@@ -21,4 +21,7 @@ public readonly struct True {
     /// <param name="_">An instance of the <see cref="True" /> struct.</param>
     /// <returns>Returns <c>true</c> when an instance of <see cref="True" /> is converted to a boolean.</returns>
     public static implicit operator bool(True _) => true;
+    public static implicit operator True(bool value) => value 
+        ? new True()
+        : throw new InvalidOperationException("Cannot convert a boolean value to a True instance."); 
 }

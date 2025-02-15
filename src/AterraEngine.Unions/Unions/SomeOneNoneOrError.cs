@@ -18,4 +18,5 @@ namespace AterraEngine.Unions;
 ///     This structure is designed to unify multiple potential states in a single type,
 ///     providing a flexible approach to handle presence, absence, or errors in data or operations.
 /// </remarks>
+[UnionExtra(UnionExtra.GenerateAsValue)]
 public readonly partial struct SomeOneNoneOrError<TValue, TError>() : IUnion<Some<TValue>, One<TValue>, None, Error<TError>>;
