@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
@@ -27,12 +27,5 @@
         <None Include="../../LICENSE" Pack="true" PackagePath="" Visible="false" />
         <None Include="../../README.md" Pack="true" PackagePath="" Visible="false" />
         <None Include="../../assets/icon.png" Pack="true" PackagePath="" Visible="false" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="IsExternalInit" Version="1.0.3">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
     </ItemGroup>
 </Project>

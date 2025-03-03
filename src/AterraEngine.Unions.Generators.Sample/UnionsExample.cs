@@ -5,11 +5,11 @@ namespace AterraEngine.Unions.Generators.Sample;
 // ---------------------------------------------------------------------------------------------------------------------
 // Code
 // ---------------------------------------------------------------------------------------------------------------------
-public readonly struct Success<T> : IValue<T> {
+public readonly struct Success<T> {
     public T Value { get; init; }
 }
 
-public readonly struct SuccessMany<T> : IValues<T> {
+public readonly struct SuccessMany<T> {
     public T Values { get; init; }
 }
 

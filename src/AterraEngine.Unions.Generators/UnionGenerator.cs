@@ -89,17 +89,12 @@ public class UnionGenerator : IIncrementalGenerator {
         );
 
         // Fetch aliases from the UnionAliases attribute
-        var attributes = namedTypeSymbol.GetAttributes().ToArray();
-        string[] aliasNames = ["UnionAliases", "UnionAliasesAttribute"];
-        AttributeData? aliasAttributeData = attributes
-            .FirstOrDefault(attr => aliasNames.Contains(attr.AttributeClass?.Name));
-        
-        string[] extraNames = ["UnionExtra", "UnionExtraAttribute"];
-        AttributeData? extraAttributeData = attributes
-            .FirstOrDefault(attr => extraNames.Contains(attr.AttributeClass?.Name));
+        AttributeData? aliasAttributeData = namedTypeSymbol.GetAttributes()
+            .FirstOrDefault(attr => attr.AttributeClass?.Name == "UnionAliasesAttribute");
 
-        int? rawEnumValue = extraAttributeData?.ConstructorArguments.FirstOrDefault().Value as int?;
-        
+        AttributeData? extraAttributeData = namedTypeSymbol.GetAttributes()
+            .FirstOrDefault(attr => attr.AttributeClass?.Name == "UnionExtraAttribute");
+
         Dictionary<ITypeSymbol, string?> typesWithAliases = ExtractTypesWithAliases(
             aliasAttributeData,
             iUnionInterface.TypeArguments
@@ -111,7 +106,7 @@ public class UnionGenerator : IIncrementalGenerator {
             typesWithAliases,
             [..namedTypeSymbol.TypeParameters.Select(tp => tp.ToDisplayString())],
             isRecordStruct,
-            rawEnumValue ?? 0
+            extraAttributeData?.ConstructorArguments.FirstOrDefault().Value as int? ?? 0
         );
     }
 
