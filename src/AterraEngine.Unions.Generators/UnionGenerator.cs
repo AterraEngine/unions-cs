@@ -90,10 +90,9 @@ public class UnionGenerator : IIncrementalGenerator {
 
         // Fetch aliases from the UnionAliases attribute
         var attributes = namedTypeSymbol.GetAttributes().ToArray();
-        string[] aliasNames = ["UnionAlias", "UnionAliasAttribute"];
+        string[] aliasNames = ["UnionAliases", "UnionAliasesAttribute"];
         AttributeData? aliasAttributeData = attributes
             .FirstOrDefault(attr => aliasNames.Contains(attr.AttributeClass?.Name));
-
         
         string[] extraNames = ["UnionExtra", "UnionExtraAttribute"];
         AttributeData? extraAttributeData = attributes

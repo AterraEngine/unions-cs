@@ -4,6 +4,7 @@
 using AterraEngine.Unions;
 using AterraEngine.Unions.Generators;
 using CodeOfChaos.GeneratorTools;
+using CodeOfChaos.Testing;
 using CodeOfChaos.Testing.TUnit;
 using JetBrains.Annotations;
 using Microsoft.CodeAnalysis;
@@ -27,6 +28,9 @@ public class UnionGeneratorTests {
         typeof(IValue<>).Assembly,
         typeof(GeneratorStringBuilder).Assembly,
         typeof(UnionExtra).Assembly,
+        typeof(System.Linq.Enumerable).Assembly,
+        typeof(UnionGenerator).Assembly,
+        typeof(System.Threading.CancellationToken).Assembly,
     ];
 
     [Test]
