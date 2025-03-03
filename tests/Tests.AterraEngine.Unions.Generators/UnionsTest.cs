@@ -4,7 +4,6 @@
 using AterraEngine.Unions;
 using AterraEngine.Unions.Generators;
 using CodeOfChaos.GeneratorTools;
-using CodeOfChaos.Testing;
 using CodeOfChaos.Testing.TUnit;
 using JetBrains.Annotations;
 using Microsoft.CodeAnalysis;
@@ -26,20 +25,16 @@ public class UnionGeneratorTests {
         typeof(IUnion<>).Assembly,
         typeof(UnionAliasesAttribute).Assembly,
         typeof(IValue<>).Assembly,
-        typeof(GeneratorStringBuilder).Assembly,
-        typeof(UnionExtra).Assembly,
-        typeof(System.Linq.Enumerable).Assembly,
-        typeof(UnionGenerator).Assembly,
-        typeof(System.Threading.CancellationToken).Assembly,
+        typeof(GeneratorStringBuilder).Assembly
     ];
 
     [Test]
-    // [Arguments(TrueOrFalseInput, TrueOrFalseOutput, "TrueOrFalse_Union.g.cs")]
-    // [Arguments(TupleOrFalseInput, TupleOrFalseOutput, "TupleOrFalse_Union.g.cs")]
-    // [Arguments(SucceededOrFalseInput, SucceededOrFalseOutput, "SucceededOrFalse_Union.g.cs")]
-    // [Arguments(NothingOrSomethingInput, NothingOrSomethingOutput, "NothingOrSomething_Union.g.cs")]
-    // [Arguments(TrueFalseOrAliasInput, TrueFalseOrAliasOutput, "TrueFalseOrAlias_Union.g.cs")]
-    // [Arguments(UnionExtraGenerateFromInput, UnionExtraGenerateFromOutput, "TupleOrFalse_Union.g.cs")]
+    [Arguments(TrueOrFalseInput, TrueOrFalseOutput, "TrueOrFalse_Union.g.cs")]
+    [Arguments(TupleOrFalseInput, TupleOrFalseOutput, "TupleOrFalse_Union.g.cs")]
+    [Arguments(SucceededOrFalseInput, SucceededOrFalseOutput, "SucceededOrFalse_Union.g.cs")]
+    [Arguments(NothingOrSomethingInput, NothingOrSomethingOutput, "NothingOrSomething_Union.g.cs")]
+    [Arguments(TrueFalseOrAliasInput, TrueFalseOrAliasOutput, "TrueFalseOrAlias_Union.g.cs")]
+    [Arguments(UnionExtraGenerateFromInput, UnionExtraGenerateFromOutput, "TupleOrFalse_Union.g.cs")]
     [Arguments(UnionExtraGenerateAsValueInput, UnionExtraGenerateAsValueOutput, "TupleOrFalse_Union.g.cs")]
     public async Task TestText(string inputText, string expectedOutput, string fileName) {
         // Arrange

@@ -14,8 +14,8 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.13.0" />
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.13.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.12.0"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.12.0"/>
         <PackageReference Include="OneOf" Version="3.0.271"/>
         <PackageReference Include="OneOf.SourceGenerator" Version="3.0.271"/>
     </ItemGroup>
@@ -28,7 +28,7 @@
 
         <!-- Ugly, but this is because of some weirdness with how analyzers are imported through a project reference -->
         <!-- Yes this is the same thing we have to do in the example, else it fails to load the benchmark -->
-        <PackageReference Include="CodeOfChaos.GeneratorTools" Version="1.4.1" GeneratePathProperty="true" PrivateAssets="all" />
+        <PackageReference Include="CodeOfChaos.GeneratorTools" Version="1.4.0" GeneratePathProperty="true" PrivateAssets="all" />
         <Analyzer Include="$(PkgCodeOfChaos_GeneratorTools)\lib\netstandard2.0\*.dll" />
     </ItemGroup>
 
