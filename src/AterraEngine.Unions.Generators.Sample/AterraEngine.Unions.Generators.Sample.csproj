@@ -12,5 +12,6 @@
         <!-- Ugly, but this is because of some weirdness with how analyzers are imported through a project reference -->
         <PackageReference Include="CodeOfChaos.GeneratorTools" Version="1.4.0" GeneratePathProperty="true" PrivateAssets="all" />
         <Analyzer Include="$(PkgCodeOfChaos_GeneratorTools)\lib\netstandard2.0\*.dll" />
+        <ProjectReference Include="..\AterraEngine.Unions\AterraEngine.Unions.csproj" />
     </ItemGroup>
 </Project>
