@@ -739,14 +739,16 @@ public class UnionGeneratorTests {
                 IsSuccessOfString = true,
                 AsSuccessOfString = value
             };
+            #pragma warning disable CS8767
             public bool TryGetAsSuccessOfStringValue([NotNullWhen(true)] out string? value) {
                 if (IsSuccessOfString) {
                     value = AsSuccessOfString.Value;
-                    return true;
+                    return value is not null;
                 }
                 value = default;
                 return false;
             }
+            #pragma warning restore CS8767
             #endregion
             #region SuccessManyOfInt32Array
             public bool IsSuccessManyOfInt32Array { get; private init; } = false;
@@ -763,14 +765,16 @@ public class UnionGeneratorTests {
                 IsSuccessManyOfInt32Array = true,
                 AsSuccessManyOfInt32Array = value
             };
+            #pragma warning disable CS8767
             public bool TryGetAsSuccessManyOfInt32ArrayValues([NotNullWhen(true)] out int[]? values) {
                 if (IsSuccessManyOfInt32Array) {
                     values = AsSuccessManyOfInt32Array.Values;
-                    return true;
+                    return values is not null;
                 }
                 values = default;
                 return false;
             }
+            #pragma warning restore CS8767
             #endregion
             public object? Value { get {
                 if (IsSuccessOfString) return AsSuccessOfString;

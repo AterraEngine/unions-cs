@@ -74,8 +74,12 @@ public readonly struct UnionObject(string structName, string nameSpace, Dictiona
             }
 
             valueTypeName = @interface.TypeArguments[0].ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
-            notNullWhen = @interface.TypeArguments[0].IsReferenceType ? "[NotNullWhen(true)] " : notNullWhen;
-            nullable = @interface.TypeArguments[0].IsReferenceType ? "?" : nullable;
+            
+            bool isReferenceType = @interface.TypeArguments[0].IsReferenceType;
+            bool isGenericType = @interface.TypeArguments[0] is INamedTypeSymbol{ IsGenericType: true};
+            
+            notNullWhen = isReferenceType || isGenericType ? "[NotNullWhen(true)] " : notNullWhen;
+            nullable = isReferenceType || isGenericType ? "?" : nullable;
             return true;
         }
 

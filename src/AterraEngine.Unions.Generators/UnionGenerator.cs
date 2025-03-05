@@ -239,15 +239,20 @@ public class UnionGenerator : IIncrementalGenerator {
 
             if (unionObject.HasFlagGenerateAsValue() && UnionObject.IsValidGenerateAsValue(sv.TypeSymbol, out bool isValues, out string valueTypeName, out string notNullWhen, out string nullable)) {
                 string s = isValues ? "s" : string.Empty;
+                string notNull = string.IsNullOrEmpty(nullable) ? "!" : string.Empty;
+                
+                // I know the pragma usage isnt good practice, but it'll have to do for now
                 builder.AppendBodyIndented($$"""
+                    #pragma warning disable CS8767
                     public bool TryGet{{sv.AsAlias}}Value{{s}}({{notNullWhen}}out {{valueTypeName}}{{nullable}} value{{s}}) {
                         if ({{sv.IsAlias}}{{sv.TypeIsNotNull}}) {
                             value{{s}} = {{sv.AsAlias}}.Value{{s}};
-                            return true;
+                            return value{{s}} is not null;
                         }
-                        value{{s}} = default;
+                        value{{s}} = default{{notNull}};
                         return false;
                     }
+                    #pragma warning restore CS8767
                     """);
             }
 

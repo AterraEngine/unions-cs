@@ -5,13 +5,16 @@ namespace AterraEngine.Unions.Generators.Sample;
 // ---------------------------------------------------------------------------------------------------------------------
 // Code
 // ---------------------------------------------------------------------------------------------------------------------
-public readonly struct Success<T> {
-    public T Value { get; init; }
+[UnionExtra(UnionExtra.GenerateAsValue)]
+public readonly partial struct SuccessOrFailure<TSuccess, TFailure>() : IUnion<Success<TSuccess>, Failure<TFailure>>, ISuccessOrFailure<TSuccess, TFailure> where TSuccess : notnull where TFailure : notnull {
+    
+    public bool TryGetqAsSuccessValue(out TSuccess value) {
+        if (IsSuccess) {
+            value = AsSuccess.Value;
+            return true;
+        }
+        value = default!;
+        return false;
+    }
+    
 }
-
-public readonly struct SuccessMany<T> {
-    public T Values { get; init; }
-}
-
-[UnionExtra(UnionExtra.GenerateAsValue | UnionExtra.GenerateFrom)]
-public readonly partial struct TupleOrFalse() : IUnion<Success<string>, SuccessMany<int[]>>;
