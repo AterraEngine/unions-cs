@@ -4,6 +4,7 @@
 using AterraEngine.Unions;
 using AterraEngine.Unions.Generators;
 using CodeOfChaos.GeneratorTools;
+using CodeOfChaos.Testing;
 using CodeOfChaos.Testing.TUnit;
 using JetBrains.Annotations;
 using Microsoft.CodeAnalysis;
