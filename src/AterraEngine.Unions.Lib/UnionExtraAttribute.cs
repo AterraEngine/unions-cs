@@ -5,7 +5,7 @@ namespace AterraEngine.Unions;
 // ---------------------------------------------------------------------------------------------------------------------
 // Code
 // ---------------------------------------------------------------------------------------------------------------------
-[AttributeUsage(AttributeTargets.Struct)]
+[AttributeUsage(AttributeTargets.Struct | AttributeTargets.Class)]
 public class UnionExtraAttribute(UnionExtra extra) : Attribute {
     public UnionExtra Extra { get; } = extra;
 }

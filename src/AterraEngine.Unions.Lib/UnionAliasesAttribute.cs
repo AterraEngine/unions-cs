@@ -30,7 +30,7 @@ namespace AterraEngine.Unions;
 /// <param name="aliasT13">Optional alias for type parameter T13.</param>
 /// <param name="aliasT14">Optional alias for type parameter T14.</param>
 /// <param name="aliasT15">Optional alias for type parameter T15.</param>
-[AttributeUsage(AttributeTargets.Struct)]
+[AttributeUsage(AttributeTargets.Struct | AttributeTargets.Class)]
 public class UnionAliasesAttribute(
     string? aliasT0 = null,
     string? aliasT1 = null,

@@ -3,18 +3,15 @@
 // ---------------------------------------------------------------------------------------------------------------------
 using AterraEngine.Unions;
 
-
 namespace Tests.AterraEngine.Unions;
 // ---------------------------------------------------------------------------------------------------------------------
 // Code
 // ---------------------------------------------------------------------------------------------------------------------
-public class ValueUnionTests
-{
+public class RefUnionTests {
     [Test]
-    public async Task Test_SingleTypeValueUnion_Success()
-    {
+    public async Task Test_SingleTypeRefUnion_Success() {
         // Arrange
-        ValueUnion<int> union = 42;
+        RefUnion<int> union = 42;
 
         // Act
         bool isT0 = union.IsT0;
@@ -26,10 +23,9 @@ public class ValueUnionTests
     }
 
     [Test]
-    public async Task Test_DoubleTypeValueUnion_FirstType()
-    {
+    public async Task Test_DoubleTypeRefUnion_FirstType() {
         // Arrange
-        ValueUnion<int, double> union = 42;
+        RefUnion<int, double> union = 42;
 
         // Act
         bool isT0 = union.IsT0;
@@ -43,10 +39,9 @@ public class ValueUnionTests
     }
 
     [Test]
-    public async Task Test_DoubleTypeValueUnion_SecondType()
-    {
+    public async Task Test_DoubleTypeRefUnion_SecondType() {
         // Arrange
-        ValueUnion<int, double> union = 3.5;
+        RefUnion<int, double> union = 3.5;
 
         // Act
         bool isT0 = union.IsT0;
@@ -60,10 +55,9 @@ public class ValueUnionTests
     }
 
     [Test]
-    public async Task Test_TripleTypeValueUnion_ThirdType()
-    {
+    public async Task Test_TripleTypeRefUnion_ThirdType() {
         // Arrange
-        ValueUnion<int, double, bool> union = true;
+        RefUnion<int, double, bool> union = true;
 
         // Act
         bool isT0 = union.IsT0;
@@ -79,10 +73,9 @@ public class ValueUnionTests
     }
 
     [Test]
-    public async Task Test_TryGetAsExactType_FirstType()
-    {
+    public async Task Test_TryGetAsExactType_FirstType() {
         // Arrange
-        ValueUnion<int, double> union = 123;
+        RefUnion<int, double> union = 123;
 
         // Act
         bool result = union.TryGetAsT0(out int value);
@@ -93,10 +86,9 @@ public class ValueUnionTests
     }
 
     [Test]
-    public async Task Test_TryGetAsExactType_InvalidType()
-    {
+    public async Task Test_TryGetAsExactType_InvalidType() {
         // Arrange
-        ValueUnion<int, double> union = 99.9;
+        RefUnion<int, double> union = 99.9;
 
         // Act
         bool result = union.TryGetAsT0(out int _);
@@ -106,30 +98,29 @@ public class ValueUnionTests
     }
 
     [Test]
-    public async Task Test_ValueTypeMatch_SimpleResult()
-    {
+    public async Task Test_RefTypeMatch_SimpleResult() {
         // Arrange
-        ValueUnion<int, double, bool> union1 = 21;
-        ValueUnion<int, double, bool> union2 = 15.5;
-        ValueUnion<int, double, bool> union3 = false;
+        RefUnion<int, double, bool> union1 = 21;
+        RefUnion<int, double, bool> union2 = 15.5;
+        RefUnion<int, double, bool> union3 = false;
 
         // Act
         int result1 = union1.Match(
-            t0 => t0 + 1,
-            t1 => (int)t1,
-            t2 => t2 ? 1 : 0
+            t0Case: t0 => t0 + 1,
+            t1Case: t1 => (int)t1,
+            t2Case: t2 => t2 ? 1 : 0
         );
 
         int result2 = union2.Match(
-            t0 => t0 + 1,
-            t1 => (int)t1,
-            t2 => t2 ? 1 : 0
+            t0Case: t0 => t0 + 1,
+            t1Case: t1 => (int)t1,
+            t2Case: t2 => t2 ? 1 : 0
         );
 
         int result3 = union3.Match(
-            t0 => t0 + 1,
-            t1 => (int)t1,
-            t2 => t2 ? 1 : 0
+            t0Case: t0 => t0 + 1,
+            t1Case: t1 => (int)t1,
+            t2Case: t2 => t2 ? 1 : 0
         );
 
         // Assert
@@ -139,40 +130,18 @@ public class ValueUnionTests
     }
 
     [Test]
-    public async Task Test_MatchAsync_SimpleResult()
-    {
+    public async Task Test_MatchAsync_SimpleResult() {
         // Arrange
-        ValueUnion<int, double, bool> union = true;
+        RefUnion<int, double, bool> union = true;
 
         // Act
         int result = await union.MatchAsync(
-            async t0 => await Task.FromResult(t0 * 2),
-            async t1 => await Task.FromResult((int)t1),
-            async t2 => await Task.FromResult(t2 ? 100 : -100)
+            t0Case: async t0 => await Task.FromResult(t0 * 2),
+            t1Case: async t1 => await Task.FromResult((int)t1),
+            t2Case: async t2 => await Task.FromResult(t2 ? 100 : -100)
         );
 
         // Assert
         await Assert.That(result).IsEqualTo(100);
-    }
-
-    [Test]
-    public async Task Test_InvalidValueUnion_UninitializedAccess_ThrowsException()
-    {
-        // Arrange
-        bool exceptionThrown = false;
-
-        // Act
-        try
-        {
-            ValueUnion<int, double> union = default;
-            object? _ = union.Value; // Force exception
-        }
-        catch (ArgumentException)
-        {
-            exceptionThrown = true;
-        }
-
-        // Assert
-        await Assert.That(exceptionThrown).IsTrue();
     }
 }

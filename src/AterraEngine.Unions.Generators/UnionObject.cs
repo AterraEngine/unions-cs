@@ -12,31 +12,15 @@ namespace AterraEngine.Unions.Generators;
 /// <summary>
 ///     Represents a union object structure used in the generation of union types.
 /// </summary>
-public readonly struct UnionObject(string structName, string nameSpace, Dictionary<ITypeSymbol, string?> typesWithAliases, ImmutableArray<string> typeParameters, bool isRecordStruct, int extraGeneratorFlags) {
-    /// <summary>
-    ///     Gets the name of the union struct associated with this instance.
-    /// </summary>
-    public string StructName { get; } = structName;
-
-    /// <summary>
-    ///     Gets the namespace associated with the UnionObject.
-    /// </summary>
-    public string Namespace { get; } = nameSpace;
-
-    /// <summary>
-    ///     Represents a dictionary property that maps type symbols to their optional aliases.
-    /// </summary>
-    public Dictionary<ITypeSymbol, string?> TypesWithAliases { get; } = typesWithAliases;
-
-    /// <summary>
-    ///     Represents the generic type parameters for a union object.
-    /// </summary>
-    private ImmutableArray<string> TypeParameters { get; } = typeParameters;
-
-    /// <summary>
-    ///     Indicates whether the struct declared in the union object is a record struct.
-    /// </summary>
-    public bool IsRecordStruct { get; } = isRecordStruct;
+public record UnionObject(
+    string StructName,
+    string NameSpace,
+    Dictionary<ITypeSymbol, string?> TypesWithAliases, 
+    ImmutableArray<string> TypeParameters,
+    bool IsRecord,
+    bool IsStruct,
+    int extraGeneratorFlags
+) {
 
     /// <summary>
     ///     Retrieves the structured class name of the union object, including its type parameters if applicable.
