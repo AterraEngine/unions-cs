@@ -20,6 +20,17 @@ public readonly partial struct Union_T8() : IUnion<
     string
 >;
 
+public partial record RefUnion_T8() : IUnion<
+      bool,
+      int,
+      List<string>,
+      float,
+      double,
+      short,
+      Dictionary<int, bool>,
+      string
+>;
+
 [GenerateOneOf]
 public partial class OneOf_T8 : OneOfBase<
     bool,

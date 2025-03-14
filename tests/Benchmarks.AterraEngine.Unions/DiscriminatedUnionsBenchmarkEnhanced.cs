@@ -22,7 +22,17 @@ public class DiscriminatedUnionsBenchmarkEnhanced {
             if (union.TryGetAsString(out string? result)) results.Add(result);
             results.Add(string.Empty);
         }
-
+        return results;
+    }
+    
+    [Benchmark(OperationsPerInvoke = 1000)]
+    public HashSet<string> AterraEngineUnions_RefUnionT8_TryGetAs_Enhanced() {
+        var results = new HashSet<string>();
+        for (int i = 0; i < 1000; i++) {
+            RefUnion_T8 union = "value";
+            if (union.TryGetAsString(out string? result)) results.Add(result);
+            results.Add(string.Empty);
+        }
         return results;
     }
 
@@ -31,6 +41,35 @@ public class DiscriminatedUnionsBenchmarkEnhanced {
         var results = new HashSet<string>();
         for (int i = 0; i < 1000; i++) {
             Union_T8 union = "value";
+            switch (union.Value) {
+                case bool:
+                case int:
+                case List<string>:
+                case float:
+                case double:
+                case short:
+                case Dictionary<int, bool>:
+                    results.Add(string.Empty);
+                    break;
+
+                case string value:
+                    results.Add(value);
+                    break;
+
+                default:
+                    results.Add(string.Empty);
+                    break;
+            }
+        }
+
+        return results;
+    }
+
+    [Benchmark(OperationsPerInvoke = 1000)]
+    public HashSet<string> AterraEngineUnions_RefUnionT8_SwitchCase_Value_Enhanced() {
+        var results = new HashSet<string>();
+        for (int i = 0; i < 1000; i++) {
+            RefUnion_T8 union = "value";
             switch (union.Value) {
                 case bool:
                 case int:
