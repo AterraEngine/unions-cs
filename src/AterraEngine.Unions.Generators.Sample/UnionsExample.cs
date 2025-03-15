@@ -8,7 +8,7 @@ namespace AterraEngine.Unions.Generators.Sample;
 // [UnionExtra(UnionExtra.GenerateAsValue)]
 // public readonly partial struct SuccessOrFailure<TSuccess, TFailure>() : IUnion<Success<TSuccess>, Failure<TFailure>>, ISuccessOrFailure<TSuccess, TFailure> where TSuccess : notnull where TFailure : notnull {
 //     
-//     public bool TryGetqAsSuccessValue(out TSuccess value) {
+//     public bool TryGetAsSuccessValue(out TSuccess value) {
 //         if (IsSuccess) {
 //             value = AsSuccess.Value;
 //             return true;
@@ -20,4 +20,4 @@ namespace AterraEngine.Unions.Generators.Sample;
 // }
 
 
-public partial record TestUnion : IUnion<int, string> { }
+public partial record struct TestUnion() : IUnion<int, string> { }

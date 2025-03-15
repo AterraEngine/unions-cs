@@ -72,20 +72,19 @@ public class UnionGenerator : IIncrementalGenerator {
     ///     such as its name, namespace, type parameters, aliases, and whether it is a record struct.
     /// </returns>
     private static UnionObject GatherUnionStructInfo(GeneratorSyntaxContext context, CancellationToken cancellationToken) {
-        bool isRecord = context.Node switch {
-            RecordDeclarationSyntax => true,
-            _ => false
-        };
-        bool isStruct = context.Node switch {
-            StructDeclarationSyntax => true,
-            _ => false
-        };
+        bool isRecord = context.Node is RecordDeclarationSyntax;
+        
+        bool isStruct = context.Node is StructDeclarationSyntax
+            || context.Node is RecordDeclarationSyntax rds
+            && rds.ClassOrStructKeyword.IsKind(SyntaxKind.StructKeyword);
+
 
         INamedTypeSymbol namedTypeSymbol = context.Node switch {
-            RecordDeclarationSyntax recordDeclarationSyntax => context.SemanticModel.GetDeclaredSymbol(recordDeclarationSyntax)!,
-            StructDeclarationSyntax structDeclarationSyntax => context.SemanticModel.GetDeclaredSymbol(structDeclarationSyntax)!,
-            _ => throw new ArgumentOutOfRangeException()// Should never happen because we check in IsUnionStructCandidate
+            RecordDeclarationSyntax recordSyntax => context.SemanticModel.GetDeclaredSymbol(recordSyntax)!,
+            StructDeclarationSyntax structSyntax => context.SemanticModel.GetDeclaredSymbol(structSyntax)!,
+            _ => throw new ArgumentOutOfRangeException() // Shouldn't happen since we confirm it's a candidate
         };
+
 
         // Check if the struct implements IUnion<>
         INamedTypeSymbol iUnionInterface = namedTypeSymbol.Interfaces.First(
