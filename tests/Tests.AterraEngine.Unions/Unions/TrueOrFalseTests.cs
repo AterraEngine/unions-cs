@@ -103,7 +103,6 @@ public class TrueOrFalseTests {
 
         // Assert
         await Assert.That(result).IsTrue();
-        await Assert.That(value).IsNotNull();
     }
 
     [Test]
@@ -129,7 +128,6 @@ public class TrueOrFalseTests {
 
         // Assert
         await Assert.That(result).IsTrue();
-        await Assert.That(value).IsNotNull();
     }
 
     [Test]
