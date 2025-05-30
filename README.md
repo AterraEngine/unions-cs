@@ -59,16 +59,16 @@ if (trueOrFalse.IsTrue) {
 using AterraEngine.Unions;
 
 ManyOneNoneOrError<int, string> union = new Many<int>([1, 2, 3]);
-if (union.TryGetAsMany(out Many<T> values) {
+if (union.TryGetAsMany(out Many<T>? values) {
   // Do stuff here
 }
-if (union.TryGetAsOne(out One<T> value) {
+if (union.TryGetAsOne(out One<T>? value) {
   // Do stuff here
 }
-if (union.TryGetAsNone(out None value) {
+if (union.TryGetAsNone(out None? value) {
   // Do stuff here
 }
-if (union.TryGetAsError(out Error<T> value) {
+if (union.TryGetAsError(out Error<T>? value) {
   // Do stuff here
 }
 ```
@@ -87,7 +87,7 @@ switch (union.Value) {
     case Error: //...
 }
 
-if (union.TryGetAsNone(out None value) {
+if (union.TryGetAsNone(out None? value) {
     // ...        
 }
 ```
