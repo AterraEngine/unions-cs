@@ -221,10 +221,10 @@ public class UnionGenerator : IIncrementalGenerator {
                     .AppendLine($"{sv.MemberNotNullWhen}public bool {sv.IsAlias} {{ get; private init; }} = false;")
                     .AppendLine($"{sv.MemberNotNullWhen}public {sv.Type}{sv.TypeNullable} {sv.AsAlias} {{get; private init;}} = default!;")
                     .AppendBody($$"""
-                        public bool TryGet{{sv.AsAlias}}({{sv.NotNullWhen}}out {{sv.Type}}{{sv.TypeNullable}} value) {
+                        public bool TryGet{{sv.AsAlias}}([NotNullWhen(true)] out {{sv.Type}}? value) {
                             if ({{sv.IsAlias}}{{sv.TypeIsNotNull}}) {
                                 value = {{sv.AsAlias}};
-                                return true;
+                                return value is not null;
                             }
                             value = default;
                             return false;
@@ -247,22 +247,19 @@ public class UnionGenerator : IIncrementalGenerator {
                     """);
             }
 
-            if (unionObject.HasFlagGenerateAsValue() && UnionObject.IsValidGenerateAsValue(sv.TypeSymbol, out bool isValues, out string valueTypeName, out string notNullWhen, out string nullable)) {
+            if (unionObject.HasFlagGenerateAsValue() && UnionObject.IsValidGenerateAsValue(sv.TypeSymbol, out bool isValues, out string valueTypeName, out string _, out string _)) {
                 string s = isValues ? "s" : string.Empty;
-                string notNull = string.IsNullOrEmpty(nullable) ? "!" : string.Empty;
                 
                 // I know the pragma usage isnt good practice, but it'll have to do for now
                 builder.AppendBodyIndented($$"""
-                    #pragma warning disable CS8767
-                    public bool TryGet{{sv.AsAlias}}Value{{s}}({{notNullWhen}}out {{valueTypeName}}{{nullable}} value{{s}}) {
+                    public bool TryGet{{sv.AsAlias}}Value{{s}}([NotNullWhen(true)] out {{valueTypeName}}? value{{s}}) {
                         if ({{sv.IsAlias}}{{sv.TypeIsNotNull}}) {
                             value{{s}} = {{sv.AsAlias}}.Value{{s}};
                             return value{{s}} is not null;
                         }
-                        value{{s}} = default{{notNull}};
+                        value{{s}} = default;
                         return false;
                     }
-                    #pragma warning restore CS8767
                     """);
             }
 

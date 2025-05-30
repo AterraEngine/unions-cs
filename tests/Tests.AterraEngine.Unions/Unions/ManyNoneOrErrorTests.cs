@@ -42,51 +42,48 @@ public class ManyNoneOrErrorTests {
     public async Task Test_TryGetAsMany_Success() {
         ManyNoneOrError<int, string> union = new Many<int>([1, 2, 3]);
 
-        await Assert.That(union.TryGetAsMany(out Many<int> result)).IsTrue();
-        await Assert.That((object)result).IsTypeOf<Many<int>>();
+        await Assert.That(union.TryGetAsMany(out Many<int>? result)).IsTrue();
+        await Assert.That(result as object).IsTypeOf<Many<int>>();
     }
 
     [Test]
     public async Task Test_TryGetAsNone_Success() {
         ManyNoneOrError<int, string> union = new None();
 
-        await Assert.That(union.TryGetAsNone(out None result)).IsTrue();
-        await Assert.That((object)result).IsTypeOf<None>();
+        await Assert.That(union.TryGetAsNone(out None? result)).IsTrue();
+        await Assert.That(result as object).IsTypeOf<None>();
     }
 
     [Test]
     public async Task Test_TryGetAsError_Success() {
         ManyNoneOrError<int, string> union = new Error<string>("An error occurred");
 
-        await Assert.That(union.TryGetAsError(out Error<string> result)).IsTrue();
-        await Assert.That((object)result).IsTypeOf<Error<string>>();
+        await Assert.That(union.TryGetAsError(out Error<string>? result)).IsTrue();
+        await Assert.That(result as object).IsTypeOf<Error<string>>();
     }
 
     [Test]
     public async Task Test_TryGetAsMany_Failure() {
         ManyNoneOrError<int, string> union = new None();
 
-        await Assert.That(union.TryGetAsMany(out Many<int> result)).IsFalse();
-        await Assert.That((object)result).IsTypeOf<Many<int>>();
-        await Assert.That(result).IsEqualTo(default);
+        await Assert.That(union.TryGetAsMany(out Many<int>? result)).IsFalse();
+        await Assert.That(result).IsNull();
     }
 
     [Test]
     public async Task Test_TryGetAsNone_Failure() {
         ManyNoneOrError<int, string> union = new Error<string>("An error occurred");
 
-        await Assert.That(union.TryGetAsNone(out None result)).IsFalse();
-        await Assert.That((object)result).IsTypeOf<None>();
-        await Assert.That(result).IsEqualTo(default);
+        await Assert.That(union.TryGetAsNone(out None? result)).IsFalse();
+        await Assert.That(result).IsNull();
     }
 
     [Test]
     public async Task Test_TryGetAsError_Failure() {
         ManyNoneOrError<int, string> union = new Many<int>([4, 5, 6]);
 
-        await Assert.That(union.TryGetAsError(out Error<string> result)).IsFalse();
-        await Assert.That((object)result).IsTypeOf<Error<string>>();
-        await Assert.That(result).IsEqualTo(default);
+        await Assert.That(union.TryGetAsError(out Error<string>? result)).IsFalse();
+        await Assert.That(result).IsNull();
     }
 
     [Test]

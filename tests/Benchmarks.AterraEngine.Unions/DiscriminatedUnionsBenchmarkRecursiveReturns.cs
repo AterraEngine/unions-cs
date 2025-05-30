@@ -36,7 +36,7 @@ public class DiscriminatedUnionsBenchmarkRecursiveReturns {
         "pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia " +
         "deserunt mollit anim id est laborum."
     )]
-    public string Value { get; set; }
+    public string Value { get; set; } = string.Empty;
 
 
     [Benchmark(OperationsPerInvoke = 1000)]

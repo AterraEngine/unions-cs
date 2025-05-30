@@ -80,7 +80,7 @@ public class ResultTests {
         Result result = Result.FromState(true);
 
         // Act
-        bool success = result.TryGetState(out bool state);
+        bool success = result.TryGetState(out bool? state);
 
         // Assert
         await Assert.That(success).IsTrue();
@@ -93,11 +93,11 @@ public class ResultTests {
         Result result = Result.FromError("Failure message");
 
         // Act
-        bool success = result.TryGetState(out bool state);
+        bool success = result.TryGetState(out bool? state);
 
         // Assert
         await Assert.That(success).IsFalse();
-        await Assert.That(state).IsFalse();// Default value of bool
+        await Assert.That(state).IsNull();
     }
 
     [Test]

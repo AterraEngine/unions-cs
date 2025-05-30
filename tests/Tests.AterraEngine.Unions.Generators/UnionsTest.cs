@@ -82,10 +82,10 @@ public class UnionGeneratorTests {
             #region True
             public bool IsTrue { get; private init; } = false;
             public TestNamespace.True AsTrue {get; private init;} = default!;
-            public bool TryGetAsTrue(out TestNamespace.True value) {
+            public bool TryGetAsTrue([NotNullWhen(true)] out TestNamespace.True? value) {
                 if (IsTrue) {
                     value = AsTrue;
-                    return true;
+                    return value is not null;
                 }
                 value = default;
                 return false;
@@ -99,10 +99,10 @@ public class UnionGeneratorTests {
             #region False
             public bool IsFalse { get; private init; } = false;
             public TestNamespace.False AsFalse {get; private init;} = default!;
-            public bool TryGetAsFalse(out TestNamespace.False value) {
+            public bool TryGetAsFalse([NotNullWhen(true)] out TestNamespace.False? value) {
                 if (IsFalse) {
                     value = AsFalse;
-                    return true;
+                    return value is not null;
                 }
                 value = default;
                 return false;
@@ -185,10 +185,10 @@ public class UnionGeneratorTests {
             #region SuccessOfStringAndNoneTuple
             public bool IsSuccessOfStringAndNoneTuple { get; private init; } = false;
             public (TestNamespace.Success<string>, TestNamespace.None) AsSuccessOfStringAndNoneTuple {get; private init;} = default!;
-            public bool TryGetAsSuccessOfStringAndNoneTuple(out (TestNamespace.Success<string>, TestNamespace.None) value) {
+            public bool TryGetAsSuccessOfStringAndNoneTuple([NotNullWhen(true)] out (TestNamespace.Success<string>, TestNamespace.None)? value) {
                 if (IsSuccessOfStringAndNoneTuple) {
                     value = AsSuccessOfStringAndNoneTuple;
-                    return true;
+                    return value is not null;
                 }
                 value = default;
                 return false;
@@ -202,10 +202,10 @@ public class UnionGeneratorTests {
             #region False
             public bool IsFalse { get; private init; } = false;
             public TestNamespace.False AsFalse {get; private init;} = default!;
-            public bool TryGetAsFalse(out TestNamespace.False value) {
+            public bool TryGetAsFalse([NotNullWhen(true)] out TestNamespace.False? value) {
                 if (IsFalse) {
                     value = AsFalse;
-                    return true;
+                    return value is not null;
                 }
                 value = default;
                 return false;
@@ -288,10 +288,10 @@ public class UnionGeneratorTests {
             #region Succeeded
             public bool IsSucceeded { get; private init; } = false;
             public (TestNamespace.Success<string>, TestNamespace.None) AsSucceeded {get; private init;} = default!;
-            public bool TryGetAsSucceeded(out (TestNamespace.Success<string>, TestNamespace.None) value) {
+            public bool TryGetAsSucceeded([NotNullWhen(true)] out (TestNamespace.Success<string>, TestNamespace.None)? value) {
                 if (IsSucceeded) {
                     value = AsSucceeded;
-                    return true;
+                    return value is not null;
                 }
                 value = default;
                 return false;
@@ -305,10 +305,10 @@ public class UnionGeneratorTests {
             #region False
             public bool IsFalse { get; private init; } = false;
             public TestNamespace.False AsFalse {get; private init;} = default!;
-            public bool TryGetAsFalse(out TestNamespace.False value) {
+            public bool TryGetAsFalse([NotNullWhen(true)] out TestNamespace.False? value) {
                 if (IsFalse) {
                     value = AsFalse;
-                    return true;
+                    return value is not null;
                 }
                 value = default;
                 return false;
@@ -388,10 +388,10 @@ public class UnionGeneratorTests {
             #region Nothing
             public bool IsNothing { get; private init; } = false;
             public TestNamespace.True AsNothing {get; private init;} = default!;
-            public bool TryGetAsNothing(out TestNamespace.True value) {
+            public bool TryGetAsNothing([NotNullWhen(true)] out TestNamespace.True? value) {
                 if (IsNothing) {
                     value = AsNothing;
-                    return true;
+                    return value is not null;
                 }
                 value = default;
                 return false;
@@ -405,10 +405,10 @@ public class UnionGeneratorTests {
             #region Something
             public bool IsSomething { get; private init; } = false;
             public TestNamespace.False AsSomething {get; private init;} = default!;
-            public bool TryGetAsSomething(out TestNamespace.False value) {
+            public bool TryGetAsSomething([NotNullWhen(true)] out TestNamespace.False? value) {
                 if (IsSomething) {
                     value = AsSomething;
-                    return true;
+                    return value is not null;
                 }
                 value = default;
                 return false;
@@ -489,10 +489,10 @@ public class UnionGeneratorTests {
             #region True
             public bool IsTrue { get; private init; } = false;
             public TestNamespace.True AsTrue {get; private init;} = default!;
-            public bool TryGetAsTrue(out TestNamespace.True value) {
+            public bool TryGetAsTrue([NotNullWhen(true)] out TestNamespace.True? value) {
                 if (IsTrue) {
                     value = AsTrue;
-                    return true;
+                    return value is not null;
                 }
                 value = default;
                 return false;
@@ -506,10 +506,10 @@ public class UnionGeneratorTests {
             #region False
             public bool IsFalse { get; private init; } = false;
             public TestNamespace.False AsFalse {get; private init;} = default!;
-            public bool TryGetAsFalse(out TestNamespace.False value) {
+            public bool TryGetAsFalse([NotNullWhen(true)] out TestNamespace.False? value) {
                 if (IsFalse) {
                     value = AsFalse;
-                    return true;
+                    return value is not null;
                 }
                 value = default;
                 return false;
@@ -523,10 +523,10 @@ public class UnionGeneratorTests {
             #region Alias
             public bool IsAlias { get; private init; } = false;
             public TestNamespace.Done AsAlias {get; private init;} = default!;
-            public bool TryGetAsAlias(out TestNamespace.Done value) {
+            public bool TryGetAsAlias([NotNullWhen(true)] out TestNamespace.Done? value) {
                 if (IsAlias) {
                     value = AsAlias;
-                    return true;
+                    return value is not null;
                 }
                 value = default;
                 return false;
@@ -617,10 +617,10 @@ public class UnionGeneratorTests {
             #region SuccessOfStringAndNoneTuple
             public bool IsSuccessOfStringAndNoneTuple { get; private init; } = false;
             public (TestNamespace.Success<string>, TestNamespace.None) AsSuccessOfStringAndNoneTuple {get; private init;} = default!;
-            public bool TryGetAsSuccessOfStringAndNoneTuple(out (TestNamespace.Success<string>, TestNamespace.None) value) {
+            public bool TryGetAsSuccessOfStringAndNoneTuple([NotNullWhen(true)] out (TestNamespace.Success<string>, TestNamespace.None)? value) {
                 if (IsSuccessOfStringAndNoneTuple) {
                     value = AsSuccessOfStringAndNoneTuple;
-                    return true;
+                    return value is not null;
                 }
                 value = default;
                 return false;
@@ -638,10 +638,10 @@ public class UnionGeneratorTests {
             #region False
             public bool IsFalse { get; private init; } = false;
             public TestNamespace.False AsFalse {get; private init;} = default!;
-            public bool TryGetAsFalse(out TestNamespace.False value) {
+            public bool TryGetAsFalse([NotNullWhen(true)] out TestNamespace.False? value) {
                 if (IsFalse) {
                     value = AsFalse;
-                    return true;
+                    return value is not null;
                 }
                 value = default;
                 return false;
@@ -730,10 +730,10 @@ public class UnionGeneratorTests {
             #region SuccessOfString
             public bool IsSuccessOfString { get; private init; } = false;
             public TestNamespace.Success<string> AsSuccessOfString {get; private init;} = default!;
-            public bool TryGetAsSuccessOfString(out TestNamespace.Success<string> value) {
+            public bool TryGetAsSuccessOfString([NotNullWhen(true)] out TestNamespace.Success<string>? value) {
                 if (IsSuccessOfString) {
                     value = AsSuccessOfString;
-                    return true;
+                    return value is not null;
                 }
                 value = default;
                 return false;
@@ -742,7 +742,6 @@ public class UnionGeneratorTests {
                 IsSuccessOfString = true,
                 AsSuccessOfString = value
             };
-            #pragma warning disable CS8767
             public bool TryGetAsSuccessOfStringValue([NotNullWhen(true)] out string? value) {
                 if (IsSuccessOfString) {
                     value = AsSuccessOfString.Value;
@@ -751,15 +750,14 @@ public class UnionGeneratorTests {
                 value = default;
                 return false;
             }
-            #pragma warning restore CS8767
             #endregion
             #region SuccessManyOfInt32Array
             public bool IsSuccessManyOfInt32Array { get; private init; } = false;
             public TestNamespace.SuccessMany<int[]> AsSuccessManyOfInt32Array {get; private init;} = default!;
-            public bool TryGetAsSuccessManyOfInt32Array(out TestNamespace.SuccessMany<int[]> value) {
+            public bool TryGetAsSuccessManyOfInt32Array([NotNullWhen(true)] out TestNamespace.SuccessMany<int[]>? value) {
                 if (IsSuccessManyOfInt32Array) {
                     value = AsSuccessManyOfInt32Array;
-                    return true;
+                    return value is not null;
                 }
                 value = default;
                 return false;
@@ -768,7 +766,6 @@ public class UnionGeneratorTests {
                 IsSuccessManyOfInt32Array = true,
                 AsSuccessManyOfInt32Array = value
             };
-            #pragma warning disable CS8767
             public bool TryGetAsSuccessManyOfInt32ArrayValues([NotNullWhen(true)] out int[]? values) {
                 if (IsSuccessManyOfInt32Array) {
                     values = AsSuccessManyOfInt32Array.Values;
@@ -777,7 +774,6 @@ public class UnionGeneratorTests {
                 values = default;
                 return false;
             }
-            #pragma warning restore CS8767
             #endregion
             public object? Value { get {
                 if (IsSuccessOfString) return AsSuccessOfString;
@@ -844,10 +840,10 @@ public class UnionGeneratorTests {
             #region Int32
             public bool IsInt32 { get; private init; } = false;
             public int AsInt32 {get; private init;} = default!;
-            public bool TryGetAsInt32(out int value) {
+            public bool TryGetAsInt32([NotNullWhen(true)] out int? value) {
                 if (IsInt32) {
                     value = AsInt32;
-                    return true;
+                    return value is not null;
                 }
                 value = default;
                 return false;
@@ -863,7 +859,7 @@ public class UnionGeneratorTests {
             public bool TryGetAsString([NotNullWhen(true)] out string? value) {
                 if (IsString && AsString is not null) {
                     value = AsString;
-                    return true;
+                    return value is not null;
                 }
                 value = default;
                 return false;
@@ -938,10 +934,10 @@ public class UnionGeneratorTests {
             #region Int32
             public bool IsInt32 { get; private init; } = false;
             public int AsInt32 {get; private init;} = default!;
-            public bool TryGetAsInt32(out int value) {
+            public bool TryGetAsInt32([NotNullWhen(true)] out int? value) {
                 if (IsInt32) {
                     value = AsInt32;
-                    return true;
+                    return value is not null;
                 }
                 value = default;
                 return false;
@@ -957,7 +953,7 @@ public class UnionGeneratorTests {
             public bool TryGetAsString([NotNullWhen(true)] out string? value) {
                 if (IsString && AsString is not null) {
                     value = AsString;
-                    return true;
+                    return value is not null;
                 }
                 value = default;
                 return false;

@@ -21,7 +21,7 @@ public class DiscriminatedUnionsBenchmark {
     [Benchmark(Baseline = true)]
     public True? AterraEngineUnions_TrueFalse_TryGetAsTrue() {
         global::AterraEngine.Unions.TrueOrFalse union = new True();
-        if (union.TryGetAsTrue(out True result)) return result;
+        if (union.TryGetAsTrue(out True? result)) return result;
 
         return null;
     }
