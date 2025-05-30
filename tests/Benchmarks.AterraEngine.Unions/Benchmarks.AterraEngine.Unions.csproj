@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="BenchmarkDotNet" Version="0.14.0"/>
+        <PackageReference Include="BenchmarkDotNet" Version="0.15.0" />
         <PackageReference Include="Dunet" Version="1.11.2"/>
         <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="4.14.0">
             <PrivateAssets>all</PrivateAssets>
@@ -28,7 +28,7 @@
 
         <!-- Ugly, but this is because of some weirdness with how analyzers are imported through a project reference -->
         <!-- Yes this is the same thing we have to do in the example, else it fails to load the benchmark -->
-        <PackageReference Include="CodeOfChaos.GeneratorTools" Version="1.9.0" GeneratePathProperty="true" PrivateAssets="all" />
+        <PackageReference Include="CodeOfChaos.GeneratorTools" Version="1.11.0" GeneratePathProperty="true" PrivateAssets="all" />
         <Analyzer Include="$(PkgCodeOfChaos_GeneratorTools)\lib\netstandard2.0\*.dll" />
     </ItemGroup>
 
