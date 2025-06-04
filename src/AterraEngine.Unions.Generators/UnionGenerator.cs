@@ -310,7 +310,7 @@ public class UnionGenerator : IIncrementalGenerator {
             )
             .AppendLine()
             .Indent(g => g
-                .AppendLine($"public async Task<TOutput> MatchAsync<TOutput>({matchArgsAsyncWithCancellation}, System.Threading.CancellationToken ct = default){{").Indent(g1 => g1
+                .AppendLine($"public async Task<TOutput> MatchAsync<TOutput>({matchArgsAsyncWithCancellation}, System.Threading.CancellationToken ct){{").Indent(g1 => g1
                     .AppendLine("switch (this) {")
                     .ForEachAppendLineIndented(
                         typeToStringValues.Values,
@@ -359,7 +359,7 @@ public class UnionGenerator : IIncrementalGenerator {
             )
             .AppendLine()
             .Indent(g => g
-                .AppendLine($"public async Task SwitchAsync({switchArgsAsyncWithCancellation}, System.Threading.CancellationToken ct = default){{").Indent(g1 => g1
+                .AppendLine($"public async Task SwitchAsync({switchArgsAsyncWithCancellation}, System.Threading.CancellationToken ct){{").Indent(g1 => g1
                     .AppendLine("switch (this) {")
                     .ForEachAppendLineIndented(
                         typeToStringValues.Values,
