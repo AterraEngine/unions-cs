@@ -14,10 +14,10 @@ jobs:
         
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
 
             - name: Setup .NET
-              uses: actions/setup-dotnet@v3
+              uses: actions/setup-dotnet@v4
               with:
                   dotnet-version: '9.x'
 
@@ -26,20 +26,13 @@ jobs:
 
             - name: Build
               run: dotnet build Unions.sln --configuration Release --no-restore
-            
-            # Ensure that the tests must pass 
-            # The job will fail automatically if any test fails because `dotnet test` exits with a non-zero code
-            - name: Run tests - Tests.AterraEngine.Unions
-              run: dotnet run -c Release --no-restore --no-build --framework net9.0
-              working-directory: "tests/Tests.AterraEngine.Unions"
-            - name: Run tests - Tests.AterraEngine.Unions.Generators
-              run: dotnet run -c Release --no-restore --no-build --framework net9.0
-              working-directory: "tests/Tests.AterraEngine.Unions.Generators"
+
+            - name: Run tests
+              run: dotnet test Unions.sln --configuration Release --no-restore --no-build
                         
             - name: Publish to NuGet
               env:
                   NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
               run: |
                   dotnet nuget push src/AterraEngine.Unions/bin/Release/*.nupkg --api-key $NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
-                  dotnet nuget push src/AterraEngine.Unions.Lib/bin/Release/*.nupkg --api-key $NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
                   dotnet nuget push src/AterraEngine.Unions.Generators/bin/Release/*.nupkg --api-key $NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
