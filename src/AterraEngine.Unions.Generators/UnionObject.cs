@@ -32,12 +32,13 @@ public record UnionObject(
     public bool HasFlagGenerateFrom() => (extraGeneratorFlags & 0b1) != 0;
     public bool HasFlagGenerateAsValue() => (extraGeneratorFlags & 0b10) != 0;
 
-    public static bool IsValidGenerateAsValue(ITypeSymbol typeSymbol, out bool isValues, out string valueTypeName, out string notNullWhen, out string nullable) {
+    public static bool IsValidGenerateAsValue(ITypeSymbol typeSymbol, out bool isValues, out string valueTypeName, out string notNullWhen, out string nullable, out string validIfTrue) {
         // Check if the typeSymbol inherits from IValue<T> or IValues<T>
         isValues = false;
         valueTypeName = string.Empty;
         notNullWhen = string.Empty;
         nullable = string.Empty;
+        validIfTrue = string.Empty;
 
         if (typeSymbol.AllInterfaces.IsEmpty) return false;
 
@@ -58,12 +59,14 @@ public record UnionObject(
             }
 
             valueTypeName = @interface.TypeArguments[0].ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
-            
+
             bool isReferenceType = @interface.TypeArguments[0].IsReferenceType;
-            bool isGenericType = @interface.TypeArguments[0] is INamedTypeSymbol{ IsGenericType: true};
+            bool isValueType = @interface.TypeArguments[0].IsValueType;
+
+            notNullWhen = isReferenceType || !isValueType ? "[NotNullWhen(true)] " : string.Empty;
+            nullable = isReferenceType || !isValueType ? "?" : string.Empty;
+            validIfTrue = isReferenceType || !isValueType ? $"value{(isValues ? "s" : string.Empty)} is not null" : "true";
             
-            notNullWhen = isReferenceType || isGenericType ? "[NotNullWhen(true)] " : notNullWhen;
-            nullable = isReferenceType || isGenericType ? "?" : nullable;
             return true;
         }
 

@@ -99,7 +99,7 @@ public class TrueOrFalseTests {
         TrueOrFalse union = new True();
 
         // Act
-        bool result = union.TryGetAsTrue(out True? _);
+        bool result = union.TryGetAsTrue(out True _);
 
         // Assert
         await Assert.That(result).IsTrue();
@@ -111,11 +111,11 @@ public class TrueOrFalseTests {
         TrueOrFalse union = new False();
 
         // Act
-        bool result = union.TryGetAsTrue(out True? value);
+        bool result = union.TryGetAsTrue(out True value);
 
         // Assert
         await Assert.That(result).IsFalse();
-        await Assert.That(value).IsEqualTo(null);
+        await Assert.That(value).IsEqualTo(default);
     }
 
     [Test]
@@ -124,7 +124,7 @@ public class TrueOrFalseTests {
         TrueOrFalse union = new False();
 
         // Act
-        bool result = union.TryGetAsFalse(out False? _);
+        bool result = union.TryGetAsFalse(out False _);
 
         // Assert
         await Assert.That(result).IsTrue();
@@ -136,11 +136,11 @@ public class TrueOrFalseTests {
         TrueOrFalse union = new True();
 
         // Act
-        bool result = union.TryGetAsFalse(out False? value);
+        bool result = union.TryGetAsFalse(out False value);
 
         // Assert
         await Assert.That(result).IsFalse();
-        await Assert.That(value).IsNull();
+        await Assert.That(value).IsEqualTo(default);
     }
 
     [Test]

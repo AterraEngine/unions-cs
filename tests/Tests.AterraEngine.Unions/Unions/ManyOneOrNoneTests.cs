@@ -68,12 +68,12 @@ public class ManyOneOrNoneTests {
         ManyOneOrNone<int> union = new Many<int>([1, 2, 3]);
 
         // Act
-        bool success = union.TryGetAsMany(out Many<int>? result);
+        bool success = union.TryGetAsMany(out Many<int> result);
 
         // Assert
         await Assert.That(success).IsTrue();
         await Assert.That(result as object).IsTypeOf<Many<int>>();
-        await Assert.That(result?.Values).IsEquivalentTo([1, 2, 3]);
+        await Assert.That(result.Values).IsEquivalentTo([1, 2, 3]);
     }
 
     [Test]
@@ -82,12 +82,12 @@ public class ManyOneOrNoneTests {
         ManyOneOrNone<int> union = new One<int>(42);
 
         // Act
-        bool success = union.TryGetAsOne(out One<int>? result);
+        bool success = union.TryGetAsOne(out One<int> result);
 
         // Assert
         await Assert.That(success).IsTrue();
         await Assert.That(result as object).IsTypeOf<One<int>>();
-        await Assert.That(result?.Value).IsEqualTo(42);
+        await Assert.That(result.Value).IsEqualTo(42);
     }
 
     [Test]
@@ -96,7 +96,7 @@ public class ManyOneOrNoneTests {
         ManyOneOrNone<int> union = new None();
 
         // Act
-        bool success = union.TryGetAsNone(out None? result);
+        bool success = union.TryGetAsNone(out None result);
 
         // Assert
         await Assert.That(success).IsTrue();
@@ -109,7 +109,7 @@ public class ManyOneOrNoneTests {
         ManyOneOrNone<int> union = new None();
 
         // Act
-        bool success = union.TryGetAsMany(out Many<int>? result);
+        bool success = union.TryGetAsMany(out Many<int> result);
 
         // Assert
         await Assert.That(success).IsFalse();

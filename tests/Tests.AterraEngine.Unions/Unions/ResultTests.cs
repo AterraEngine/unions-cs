@@ -75,12 +75,12 @@ public class ResultTests {
     }
 
     [Test]
-    public async Task TryGetState_Success() {
+    public async Task TryGetAsState_Success() {
         // Arrange
         Result result = Result.FromState(true);
 
         // Act
-        bool success = result.TryGetState(out bool? state);
+        bool success = result.TryGetAsState(out bool state);
 
         // Assert
         await Assert.That(success).IsTrue();
@@ -88,16 +88,16 @@ public class ResultTests {
     }
 
     [Test]
-    public async Task TryGetState_Failure() {
+    public async Task TryGetAsState_Failure() {
         // Arrange
         Result result = Result.FromError("Failure message");
 
         // Act
-        bool success = result.TryGetState(out bool? state);
+        bool success = result.TryGetAsState(out bool state);
 
         // Assert
         await Assert.That(success).IsFalse();
-        await Assert.That(state).IsNull();
+        await Assert.That(state).IsFalse();
     }
 
     [Test]

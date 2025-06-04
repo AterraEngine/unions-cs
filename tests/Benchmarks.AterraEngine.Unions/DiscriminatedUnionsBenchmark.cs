@@ -21,7 +21,7 @@ public class DiscriminatedUnionsBenchmark {
     [Benchmark(Baseline = true)]
     public True? AterraEngineUnions_TrueFalse_TryGetAsTrue() {
         global::AterraEngine.Unions.TrueOrFalse union = new True();
-        if (union.TryGetAsTrue(out True? result)) return result;
+        if (union.TryGetAsTrue(out True result)) return result;
 
         return null;
     }
@@ -32,7 +32,7 @@ public class DiscriminatedUnionsBenchmark {
         switch (union) {
             case { IsSuccess: true, AsSuccess: var successValue }: return successValue;
             case { IsFailure: true, AsFailure: var failureValue }: return null;
-            default: return default!;
+            default: return null!;
         }
     }
 
@@ -42,7 +42,7 @@ public class DiscriminatedUnionsBenchmark {
         switch (union.Value) {
             case Success<string> success: return success;
             case Failure<None>: return null;
-            default: return default!;
+            default: return null!;
         }
     }
 

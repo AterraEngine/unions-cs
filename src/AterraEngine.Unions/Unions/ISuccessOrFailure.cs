@@ -101,7 +101,7 @@ public interface ITryGetAsSuccess<T> {
     ///     contains the default value.
     /// </param>
     /// <returns>Returns true if the value could be retrieved as a Success; otherwise, returns false.</returns>
-    bool TryGetAsSuccess(out Success<T>? value);
+    bool TryGetAsSuccess(out Success<T> value);
 }
 
 /// <summary>
@@ -120,7 +120,7 @@ public interface ITryGetAsFailure<T> {
     /// <returns>
     ///     true if the operation was successful and the current instance represents a failure; otherwise, false.
     /// </returns>
-    bool TryGetAsFailure(out Failure<T>? value);
+    bool TryGetAsFailure(out Failure<T> value);
 }
 
 /// <summary>

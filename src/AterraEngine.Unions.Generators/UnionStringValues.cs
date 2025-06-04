@@ -61,24 +61,26 @@ public readonly struct UnionStringValues(ITypeSymbol type, string? alias) {
     ///     Represents a property that determines whether a nullable postfix ("?") should be applied to the type string
     ///     based on whether the associated type is a reference type.
     /// </summary>
-    public string TypeNullable => TypeSymbol.IsReferenceType ? "?" : string.Empty;
+    public string TypeNullable => TypeSymbol.IsReferenceType || !TypeSymbol.IsValueType ? "?" : string.Empty;
 
     /// <summary>
     ///     A string property representing a nullable annotation in the form of `[NotNullWhen(true)]`
     ///     appended conditionally based on the reference type status of the associated type.
     ///     Indicates that the output value will not be null when the corresponding condition evaluates to true.
     /// </summary>
-    public string NotNullWhen => TypeSymbol.IsReferenceType ? "[NotNullWhen(true)] " : string.Empty;
+    public string NotNullWhen => TypeSymbol.IsReferenceType || !TypeSymbol.IsValueType ? "[NotNullWhen(true)] " : string.Empty;
 
     /// <summary>
     ///     Gets a string that represents a condition to verify if the associated type is not null.
     /// </summary>
-    public string TypeIsNotNull => TypeSymbol.IsReferenceType ? $" && {AsAlias} is not null" : string.Empty;
+    public string TypeIsNotNull => TypeSymbol.IsReferenceType || !TypeSymbol.IsValueType ? $" && {AsAlias} is not null" : string.Empty;
+    
+    public string CheckIfValidValue(string? s = null) => TypeSymbol.IsReferenceType || !TypeSymbol.IsValueType ? $"value{s} is not null" : "true";
 
     /// <summary>
     ///     Indicates that the specified member will not be null when the containing method returns a specified value.
     /// </summary>
-    public string MemberNotNullWhen => TypeSymbol.IsReferenceType ? $"[MemberNotNullWhen(true, \"{AsAlias}\")]" : string.Empty;
+    public string MemberNotNullWhen => TypeSymbol.IsReferenceType || !TypeSymbol.IsValueType ? $"[MemberNotNullWhen(true, \"{AsAlias}\")]" : string.Empty;
 
     // -----------------------------------------------------------------------------------------------------------------
     // Methods

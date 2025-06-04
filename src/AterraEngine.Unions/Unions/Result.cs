@@ -1,10 +1,7 @@
 ﻿// ---------------------------------------------------------------------------------------------------------------------
 // Imports
 // ---------------------------------------------------------------------------------------------------------------------
-using System.Diagnostics.CodeAnalysis;
-
 namespace AterraEngine.Unions;
-
 // ---------------------------------------------------------------------------------------------------------------------
 // Code
 // ---------------------------------------------------------------------------------------------------------------------
@@ -12,7 +9,6 @@ namespace AterraEngine.Unions;
 [UnionExtra(UnionExtra.GenerateFrom | UnionExtra.GenerateAsValue)]
 public readonly partial struct Result() : IUnion<bool, Error<string>> {
     public bool State => AsState;
-    public bool TryGetState([NotNullWhen(true)] out bool? state) => TryGetAsState(out state);
 
     public static implicit operator bool(Result value) => value.AsState;
 

@@ -68,12 +68,12 @@ public class SomeNoneOrErrorTests {
         SomeNoneOrError<int, string> union = new Some<int>([1, 2, 3]);
 
         // Act
-        bool success = union.TryGetAsSome(out Some<int>? result);
+        bool success = union.TryGetAsSome(out Some<int> result);
 
         // Assert
         await Assert.That(success).IsTrue();
         await Assert.That(result as object).IsTypeOf<Some<int>>();
-        await Assert.That(result?.Values).IsEquivalentTo([1, 2, 3]);
+        await Assert.That(result.Values).IsEquivalentTo([1, 2, 3]);
     }
 
     [Test]
@@ -82,7 +82,7 @@ public class SomeNoneOrErrorTests {
         SomeNoneOrError<int, string> union = new None();
 
         // Act
-        bool success = union.TryGetAsNone(out None? result);
+        bool success = union.TryGetAsNone(out None result);
 
         // Assert
         await Assert.That(success).IsTrue();
@@ -95,12 +95,12 @@ public class SomeNoneOrErrorTests {
         SomeNoneOrError<int, string> union = new Error<string>("Error message");
 
         // Act
-        bool success = union.TryGetAsError(out Error<string>? result);
+        bool success = union.TryGetAsError(out Error<string> result);
 
         // Assert
         await Assert.That(success).IsTrue();
         await Assert.That(result as object).IsTypeOf<Error<string>>();
-        await Assert.That(result?.Value).IsEqualTo("Error message");
+        await Assert.That(result.Value).IsEqualTo("Error message");
     }
 
     [Test]

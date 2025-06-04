@@ -90,12 +90,12 @@ public class SomeOrNoneTests {
         SomeOrNone<int> union = new Some<int>([4, 5, 6]);
 
         // Act
-        bool result = union.TryGetAsSome(out Some<int>? some);
+        bool result = union.TryGetAsSome(out Some<int> some);
 
         // Assert
         await Assert.That(result).IsTrue();
         await Assert.That(some as object).IsTypeOf<Some<int>>();
-        await Assert.That(some?.Values).IsEquivalentTo([4, 5, 6]);
+        await Assert.That(some.Values).IsEquivalentTo([4, 5, 6]);
     }
 
     [Test]
@@ -104,7 +104,7 @@ public class SomeOrNoneTests {
         SomeOrNone<int> union = new None();
 
         // Act
-        bool result = union.TryGetAsSome(out Some<int>? some);
+        bool result = union.TryGetAsSome(out Some<int> some);
 
         // Assert
         await Assert.That(result).IsFalse();
@@ -117,7 +117,7 @@ public class SomeOrNoneTests {
         SomeOrNone<int> union = new None();
 
         // Act
-        bool result = union.TryGetAsNone(out None? none);
+        bool result = union.TryGetAsNone(out None none);
 
         // Assert
         await Assert.That(result).IsTrue();
@@ -130,11 +130,11 @@ public class SomeOrNoneTests {
         SomeOrNone<int> union = new Some<int>([7, 8]);
 
         // Act
-        bool result = union.TryGetAsNone(out None? none);
+        bool result = union.TryGetAsNone(out None none);
 
         // Assert
         await Assert.That(result).IsFalse();
-        await Assert.That(none).IsNull();
+        await Assert.That(none).IsEqualTo(default);
     }
 
     [Test]
