@@ -24,7 +24,6 @@ public static class Program {
         //      Code is the true saviour
         string projects = string.Join(";",
             "AterraEngine.Unions",
-            "AterraEngine.Unions.Lib",
             "AterraEngine.Unions.Generators"
         );
 
