@@ -30,16 +30,16 @@ public class UnionGeneratorTests {
     ];
 
     [Test]
-    [Arguments(TrueOrFalseInput, TrueOrFalseOutput, "TrueOrFalse_Union.g.cs")]
-    [Arguments(TupleOrFalseInput, TupleOrFalseOutput, "TupleOrFalse_Union.g.cs")]
-    [Arguments(SucceededOrFalseInput, SucceededOrFalseOutput, "SucceededOrFalse_Union.g.cs")]
-    [Arguments(NothingOrSomethingInput, NothingOrSomethingOutput, "NothingOrSomething_Union.g.cs")]
-    [Arguments(TrueFalseOrAliasInput, TrueFalseOrAliasOutput, "TrueFalseOrAlias_Union.g.cs")]
-    [Arguments(UnionExtraGenerateFromInput, UnionExtraGenerateFromOutput, "TupleOrFalse_Union.g.cs")]
-    [Arguments(UnionExtraGenerateAsValueInput, UnionExtraGenerateAsValueOutput, "TupleOrFalse_Union.g.cs")]
-    [Arguments(RecordStructUnionInput, RecordStructUnionOutput, "RecordStructUnion_Union.g.cs")]
-    [Arguments(RecordUnionInput, RecordUnionOutput, "RecordUnion_Union.g.cs")]
-    public async Task TestText(string inputText, string expectedOutput, string fileName) {
+    [Arguments("TrueOrFalse_Union.g.cs", TrueOrFalseInput, TrueOrFalseOutput)]
+    [Arguments("TupleOrFalse_Union.g.cs", TupleOrFalseInput, TupleOrFalseOutput)]
+    [Arguments("SucceededOrFalse_Union.g.cs", SucceededOrFalseInput, SucceededOrFalseOutput)]
+    [Arguments("NothingOrSomething_Union.g.cs", NothingOrSomethingInput, NothingOrSomethingOutput)]
+    [Arguments("TrueFalseOrAlias_Union.g.cs", TrueFalseOrAliasInput, TrueFalseOrAliasOutput)]
+    [Arguments("TupleOrFalse_Union.g.cs", UnionExtraGenerateFromInput, UnionExtraGenerateFromOutput)]
+    [Arguments("TupleOrFalse_Union.g.cs", UnionExtraGenerateAsValueInput, UnionExtraGenerateAsValueOutput)]
+    [Arguments("RecordStructUnion_Union.g.cs", RecordStructUnionInput, RecordStructUnionOutput)]
+    [Arguments("RecordUnion_Union.g.cs", RecordUnionInput, RecordUnionOutput)]
+    public async Task TestText(string fileName, string inputText, string expectedOutput) {
         // Arrange
         RoslynGeneratorRunner runner = await new RoslynCompilationRunner()
             .AddReferences(ReferenceAssemblies)
@@ -854,8 +854,8 @@ public class UnionGeneratorTests {
             };
             #endregion
             #region String
-            [MemberNotNullWhen(true, "AsString")]public bool IsString { get; private init; } = false;
-            [MemberNotNullWhen(true, "AsString")]public string? AsString {get; private init;} = default!;
+           public bool IsString { get; private init; } = false;
+           public string AsString {get; private init;} = default!;
             public bool TryGetAsString([NotNullWhen(true)] out string? value) {
                 if (IsString && AsString is not null) {
                     value = AsString;
@@ -948,8 +948,8 @@ public class UnionGeneratorTests {
             };
             #endregion
             #region String
-            [MemberNotNullWhen(true, "AsString")]public bool IsString { get; private init; } = false;
-            [MemberNotNullWhen(true, "AsString")]public string? AsString {get; private init;} = default!;
+            public bool IsString { get; private init; } = false;
+            public string AsString {get; private init;} = default!;
             public bool TryGetAsString([NotNullWhen(true)] out string? value) {
                 if (IsString && AsString is not null) {
                     value = AsString;
