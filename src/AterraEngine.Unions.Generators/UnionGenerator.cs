@@ -279,6 +279,7 @@ public class UnionGenerator : IIncrementalGenerator {
         #region Match Methods
         string matchArgs = string.Join(",", typeToStringValues.Values.Select(sv => $"Func<{sv.Type}, TOutput> {sv.Alias.ToLowerInvariant()}Case"));
         string matchArgsAsync = string.Join(",", typeToStringValues.Values.Select(sv => $"Func<{sv.Type}, Task<TOutput>> {sv.Alias.ToLowerInvariant()}Case"));
+        string matchArgsAsyncWithCancellation = string.Join(",", typeToStringValues.Values.Select(sv => $"Func<{sv.Type}, System.Threading.CancellationToken, Task<TOutput>> {sv.Alias.ToLowerInvariant()}Case"));
 
         builder
             .AppendLineIndented("#region Match and MatchAsync")
@@ -307,6 +308,19 @@ public class UnionGenerator : IIncrementalGenerator {
                 )
                 .AppendLine("}")
             )
+            .AppendLine()
+            .Indent(g => g
+                .AppendLine($"public async Task<TOutput> MatchAsync<TOutput>({matchArgsAsyncWithCancellation}, System.Threading.CancellationToken ct = default){{").Indent(g1 => g1
+                    .AppendLine("switch (this) {")
+                    .ForEachAppendLineIndented(
+                        typeToStringValues.Values,
+                        itemFormatter: sv => $"case {{{sv.IsAlias}: true, {sv.AsAlias}: var value}} : return await {sv.Alias.ToLowerInvariant()}Case(value, ct);"
+                    )
+                    .AppendLine("}")
+                    .AppendLine("throw new ArgumentException(\"Union does not contain a value\");")
+                )
+                .AppendLine("}")
+            )
             .AppendLineIndented("#endregion")
             .AppendLine();
         #endregion
@@ -314,7 +328,8 @@ public class UnionGenerator : IIncrementalGenerator {
         #region Switch Methods
         string switchArgs = string.Join(",", typeToStringValues.Values.Select(sv => $"Action<{sv.Type}> {sv.Alias.ToLowerInvariant()}Case"));
         string switchArgsAsync = string.Join(",", typeToStringValues.Values.Select(sv => $"Func<{sv.Type}, Task> {sv.Alias.ToLowerInvariant()}Case"));
-
+        string switchArgsAsyncWithCancellation = string.Join(",", typeToStringValues.Values.Select(sv => $"Func<{sv.Type}, System.Threading.CancellationToken, Task> {sv.Alias.ToLowerInvariant()}Case"));
+        
         builder
             .AppendLineIndented("#region Switch and SwitchAsync")
             .Indent(g => g
@@ -336,6 +351,19 @@ public class UnionGenerator : IIncrementalGenerator {
                     .ForEachAppendLineIndented(
                         typeToStringValues.Values,
                         itemFormatter: sv => $"case {{{sv.IsAlias}: true, {sv.AsAlias}: var value}} : await {sv.Alias.ToLowerInvariant()}Case(value); return;"
+                    )
+                    .AppendLine("}")
+                    .AppendLine("throw new ArgumentException(\"Union does not contain a value\");")
+                )
+                .AppendLine("}")
+            )
+            .AppendLine()
+            .Indent(g => g
+                .AppendLine($"public async Task SwitchAsync({switchArgsAsyncWithCancellation}, System.Threading.CancellationToken ct = default){{").Indent(g1 => g1
+                    .AppendLine("switch (this) {")
+                    .ForEachAppendLineIndented(
+                        typeToStringValues.Values,
+                        itemFormatter: sv => $"case {{{sv.IsAlias}: true, {sv.AsAlias}: var value}} : await {sv.Alias.ToLowerInvariant()}Case(value, ct); return;"
                     )
                     .AppendLine("}")
                     .AppendLine("throw new ArgumentException(\"Union does not contain a value\");")
