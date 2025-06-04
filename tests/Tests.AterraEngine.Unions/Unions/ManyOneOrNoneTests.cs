@@ -113,7 +113,7 @@ public class ManyOneOrNoneTests {
 
         // Assert
         await Assert.That(success).IsFalse();
-        await Assert.That(result).IsNull();
+        await Assert.That(result).IsEqualTo(default);
     }
 
     [Test]
