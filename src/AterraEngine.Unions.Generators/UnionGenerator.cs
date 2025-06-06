@@ -297,11 +297,11 @@ public class UnionGenerator : IIncrementalGenerator {
             )
             .AppendLine()
             .Indent(g => g
-                .AppendLine($"public async Task<TOutput> MatchAsync<TOutput>({matchArgsAsync}){{").Indent(g1 => g1
+                .AppendLine($"public Task<TOutput> MatchAsync<TOutput>({matchArgsAsync}){{").Indent(g1 => g1
                     .AppendLine("switch (this) {")
                     .ForEachAppendLineIndented(
                         typeToStringValues.Values,
-                        itemFormatter: sv => $"case {{{sv.IsAlias}: true, {sv.AsAlias}: var value}} : return await {sv.Alias.ToLowerInvariant()}Case(value);"
+                        itemFormatter: sv => $"case {{{sv.IsAlias}: true, {sv.AsAlias}: var value}} : return {sv.Alias.ToLowerInvariant()}Case(value);"
                     )
                     .AppendLine("}")
                     .AppendLine("throw new ArgumentException(\"Union does not contain a value\");")
@@ -310,11 +310,11 @@ public class UnionGenerator : IIncrementalGenerator {
             )
             .AppendLine()
             .Indent(g => g
-                .AppendLine($"public async Task<TOutput> MatchAsync<TOutput>({matchArgsAsyncWithCancellation}, System.Threading.CancellationToken ct){{").Indent(g1 => g1
+                .AppendLine($"public Task<TOutput> MatchAsync<TOutput>({matchArgsAsyncWithCancellation}, System.Threading.CancellationToken ct){{").Indent(g1 => g1
                     .AppendLine("switch (this) {")
                     .ForEachAppendLineIndented(
                         typeToStringValues.Values,
-                        itemFormatter: sv => $"case {{{sv.IsAlias}: true, {sv.AsAlias}: var value}} : return await {sv.Alias.ToLowerInvariant()}Case(value, ct);"
+                        itemFormatter: sv => $"case {{{sv.IsAlias}: true, {sv.AsAlias}: var value}} : return {sv.Alias.ToLowerInvariant()}Case(value, ct);"
                     )
                     .AppendLine("}")
                     .AppendLine("throw new ArgumentException(\"Union does not contain a value\");")
@@ -346,11 +346,11 @@ public class UnionGenerator : IIncrementalGenerator {
             )
             .AppendLine()
             .Indent(g => g
-                .AppendLine($"public async Task SwitchAsync({switchArgsAsync}){{").Indent(g1 => g1
+                .AppendLine($"public Task SwitchAsync({switchArgsAsync}){{").Indent(g1 => g1
                     .AppendLine("switch (this) {")
                     .ForEachAppendLineIndented(
                         typeToStringValues.Values,
-                        itemFormatter: sv => $"case {{{sv.IsAlias}: true, {sv.AsAlias}: var value}} : await {sv.Alias.ToLowerInvariant()}Case(value); return;"
+                        itemFormatter: sv => $"case {{{sv.IsAlias}: true, {sv.AsAlias}: var value}} : return {sv.Alias.ToLowerInvariant()}Case(value);"
                     )
                     .AppendLine("}")
                     .AppendLine("throw new ArgumentException(\"Union does not contain a value\");")
@@ -359,11 +359,11 @@ public class UnionGenerator : IIncrementalGenerator {
             )
             .AppendLine()
             .Indent(g => g
-                .AppendLine($"public async Task SwitchAsync({switchArgsAsyncWithCancellation}, System.Threading.CancellationToken ct){{").Indent(g1 => g1
+                .AppendLine($"public Task SwitchAsync({switchArgsAsyncWithCancellation}, System.Threading.CancellationToken ct){{").Indent(g1 => g1
                     .AppendLine("switch (this) {")
                     .ForEachAppendLineIndented(
                         typeToStringValues.Values,
-                        itemFormatter: sv => $"case {{{sv.IsAlias}: true, {sv.AsAlias}: var value}} : await {sv.Alias.ToLowerInvariant()}Case(value, ct); return;"
+                        itemFormatter: sv => $"case {{{sv.IsAlias}: true, {sv.AsAlias}: var value}} : return {sv.Alias.ToLowerInvariant()}Case(value, ct);"
                     )
                     .AppendLine("}")
                     .AppendLine("throw new ArgumentException(\"Union does not contain a value\");")
