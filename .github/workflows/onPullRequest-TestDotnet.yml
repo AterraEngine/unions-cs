@@ -1,0 +1,27 @@
+﻿name: Dotnet Testing
+
+on:
+    pull_request:
+        types: [opened, synchronize, reopened, ready_for_review]
+        branches: [ core ] 
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Setup .NET
+              uses: actions/setup-dotnet@v4
+              with:
+                  dotnet-version: '9.x'
+
+            - name: Restore dependencies
+              run: dotnet restore Unions.sln
+
+            - name: Build
+              run: dotnet build Unions.sln --configuration Release --no-restore
+            
+            - name: Run tests
+              run: dotnet test Unions.sln --configuration Release --no-restore --no-build
