@@ -9,8 +9,7 @@ namespace Benchmarks.AterraEngine.Unions;
 // ---------------------------------------------------------------------------------------------------------------------
 public static class Program {
     public static void Main(string[] args) {
-        // BenchmarkRunner.Run<DiscriminatedUnionsBenchmark>();
+        BenchmarkRunner.Run<DiscriminatedUnionsBenchmark>();
         // BenchmarkRunner.Run<DiscriminatedUnionsBenchmarkEnhanced>();
-        BenchmarkRunner.Run<DiscriminatedUnionsBenchmarkRecursiveReturns>();
     }
 }
