@@ -1,28 +1,24 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net9.0;net8.0</TargetFrameworks>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-
-        <IsPackable>false</IsPackable>
-        <IsTestProject>true</IsTestProject>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="JetBrains.Annotations" Version="2024.3.0"/>
-        <PackageReference Include="TUnit" Version="0.24.0" />
-    </ItemGroup>
-
-    <ItemGroup>
+        <PackageReference Include="IsExternalInit" Version="1.0.3">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <ProjectReference Include="..\..\src\AterraEngine.Unions.Generators\AterraEngine.Unions.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
         <ProjectReference Include="..\..\src\AterraEngine.Unions\AterraEngine.Unions.csproj"/>
-        
+
         <!-- Ugly, but this is because of some weirdness with how analyzers are imported through a project reference -->
         <!-- Yes this is the same thing we have to do in the example, else it fails to load the benchmark -->
-<!--        <PackageReference Include="CodeOfChaos.GeneratorTools" Version="1.11.0" GeneratePathProperty="true" PrivateAssets="all" />-->
+        <PackageReference Include="CodeOfChaos.GeneratorTools" Version="1.11.0" GeneratePathProperty="true" PrivateAssets="all" />
         <Analyzer Include="$(PkgCodeOfChaos_GeneratorTools)\lib\netstandard2.0\*.dll" />
-        <ProjectReference Include="..\Tests.AterraEngine.Unions.Lib\Tests.AterraEngine.Unions.Lib.csproj" />
     </ItemGroup>
-
 </Project>

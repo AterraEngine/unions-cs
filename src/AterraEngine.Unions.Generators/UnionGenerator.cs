@@ -51,11 +51,11 @@ public class UnionGenerator : IIncrementalGenerator {
         if (node is not (StructDeclarationSyntax or RecordDeclarationSyntax)) return false;
         if (node is not BaseTypeDeclarationSyntax { BaseList.Types.Count : > 0 } baseTypeDeclarationSyntax) return false;
 
-        return baseTypeDeclarationSyntax.BaseList.Types[0].Type switch {
+        return baseTypeDeclarationSyntax.BaseList.Types.Any(typeSyntax => typeSyntax.Type switch {
             GenericNameSyntax { Identifier.ValueText: var valueText } => valueText.Contains("IUnion"),
             QualifiedNameSyntax qualifiedNameSyntax => qualifiedNameSyntax.ToFullString().Contains("IUnion"),
             _ => false
-        };
+        });
     }
 
     /// <summary>
