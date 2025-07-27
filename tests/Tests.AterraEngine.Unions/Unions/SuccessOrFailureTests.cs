@@ -81,7 +81,7 @@ public class SuccessOrFailureTests {
 
         // Assert
         await Assert.That(result).IsTrue();
-        await Assert.That(value!).IsEqualTo(99);
+        await Assert.That(value).IsEqualTo(99);
     }
 
     [Test]

@@ -5,6 +5,7 @@ using AterraEngine.Unions;
 using Dunet;
 using OneOf;
 
+// ReSharper disable InconsistentNaming
 namespace Benchmarks.AterraEngine.Unions;
 // ---------------------------------------------------------------------------------------------------------------------
 // Code
@@ -20,7 +21,7 @@ public readonly partial struct Union_T8() : IUnion<
     string
 >;
 
-public partial record RefUnion_T8() : IUnion<
+public partial record RefUnion_T8 : IUnion<
       bool,
       int,
       List<string>,
@@ -45,7 +46,9 @@ public partial class OneOf_T8 : OneOfBase<
 
 [GenerateOneOf]
 public partial class OneOf_SuccessOrFailure<TSuccess, TFailure> : OneOfBase<OneOf.Types.Success<TSuccess>, OneOf_SuccessOrFailure<TSuccess, TFailure>.Failure<TFailure>> {
-    public class Failure<T> {}
+    // ReSharper disable once UnusedTypeParameter
+    // ReSharper disable once ClassNeverInstantiated.Global
+    public sealed class Failure<T>;
 }
 
 [Union]

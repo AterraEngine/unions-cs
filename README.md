@@ -5,7 +5,7 @@ A Union Library for DotNet
 ## Overview
 
 `AterraEngine.Unions` is a comprehensive library for creating and managing union types in .NET.
-It leverages the latest features of C# 13.0 and .NET 9.0 to provide a robust and efficient framework for representing
+It leverages the latest features of C# 13.0, whilst built for NetStandard 2.0 to provide a robust and easily compatible framework for representing
 multiple and diverse data types as a single unit.
 The package was inspired by the OneOf package.
 
@@ -174,43 +174,45 @@ This is due to the fact that a lot of the functionality of this discriminated un
 
 ### Benchmarks
 
-The following is a result of the benchmarks found
-at [Benchmarks.AterraEngine.Unions](tests/Benchmarks.AterraEngine.Unions).
-Benchmark results were last updated for version `3.10.0`
+The following is a result of the benchmarks ran at [Benchmarks.AterraEngine.Unions](tests/Benchmarks.AterraEngine.Unions).
+Benchmark results were last updated for version `6.0.0`
 
-> BenchmarkDotNet v0.14.0, Windows 11 (10.0.22631.4541/23H2/2023Update/SunValley3)
->
-> AMD Ryzen 9 5950X, 1 CPU, 32 logical and 16 physical cores
->
-> .NET SDK 9.0.100
->
-> [Host]     : .NET 9.0.0 (9.0.24.52809), X64 RyuJIT AVX2
->
-> DefaultJob : .NET 9.0.0 (9.0.24.52809), X64 RyuJIT AVX2
+> BenchmarkDotNet v0.15.2, Windows 11 (10.0.26100.4652/24H2/2024Update/HudsonValley)
+> Unknown processor
+> .NET SDK 9.0.300
+> [Host]     : .NET 9.0.5 (9.0.525.21509), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+> DefaultJob : .NET 9.0.5 (9.0.525.21509), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
 
-#### Normal benchmarks:
+
+#### Default benchmarks:
 
 | Method                                                |       Mean |     Error |    StdDev |     Median | Ratio | RatioSD |   Gen0 | Allocated | Alloc Ratio |
 |-------------------------------------------------------|-----------:|----------:|----------:|-----------:|------:|--------:|-------:|----------:|------------:|
-| AterraEngineUnions_UnionT8_TryGetAs                   |  0.0058 ns | 0.0096 ns | 0.0090 ns |  0.0000 ns | 0.001 |    0.00 |      - |         - |          NA |
-| AterraEngineUnions_UnionT8_SwitchCase_Value           |  0.0398 ns | 0.0335 ns | 0.0372 ns |  0.0276 ns | 0.007 |    0.01 |      - |         - |          NA |
-| AterraEngineUnions_SuccessOrFailure_SwitchCase_Struct |  0.2689 ns | 0.0295 ns | 0.0276 ns |  0.2725 ns | 0.047 |    0.00 |      - |         - |          NA |
-| AterraEngineUnions_SuccessOrFailure_SwitchCase_Value  |  3.8638 ns | 0.1025 ns | 0.0959 ns |  3.8513 ns | 0.670 |    0.02 | 0.0014 |      24 B |          NA |
-| OneOf_SuccessOrFailure_SwitchCase_Value               |  5.7265 ns | 0.1393 ns | 0.3173 ns |  5.6165 ns | 0.993 |    0.06 | 0.0014 |      24 B |          NA |
-| AterraEngineUnions_TrueFalse_TryGetAsTrue             |  5.7657 ns | 0.1016 ns | 0.0950 ns |  5.7967 ns | 1.000 |    0.02 |      - |         - |          NA |
-| OneOfTrueFalse_TryGetAsTrue                           |  7.4966 ns | 0.1982 ns | 0.2507 ns |  7.4139 ns | 1.301 |    0.05 | 0.0038 |      64 B |          NA |
-| OneOf_OneOfT8_SwitchCase_Value                        |  7.9805 ns | 0.2031 ns | 0.2173 ns |  7.9621 ns | 1.384 |    0.04 | 0.0038 |      64 B |          NA |
-| OneOf_OneOfT8_TryGetAs                                | 11.9939 ns | 0.1411 ns | 0.2024 ns | 11.9915 ns | 2.081 |    0.05 | 0.0038 |      64 B |          NA |
-| Dunet_TrueFalse_MatchTrue                             | 20.8607 ns | 0.2432 ns | 0.2031 ns | 20.8425 ns | 3.619 |    0.07 | 0.0105 |     176 B |          NA |
+| AterraEngineUnions_UnionT8_SwitchCase_Value           |  0.0007 ns | 0.0023 ns | 0.0022 ns |  0.0000 ns | 0.000 |    0.00 |      - |         - |          NA |
+| AterraEngineUnions_UnionT8_TryGetAs                   |  0.0114 ns | 0.0170 ns | 0.0244 ns |  0.0000 ns | 0.003 |    0.01 |      - |         - |          NA |
+| AterraEngineUnions_SuccessOrFailure_SwitchCase_Struct |  0.0549 ns | 0.0220 ns | 0.0226 ns |  0.0617 ns | 0.016 |    0.01 |      - |         - |          NA |
+| AterraEngineUnions_SuccessOrFailure_SwitchCase_Value  |  2.9125 ns | 0.0790 ns | 0.0999 ns |  2.9027 ns | 0.831 |    0.03 | 0.0029 |      24 B |          NA |
+| AterraEngineUnions_TrueFalse_TryGetAsTrue             |  3.5049 ns | 0.0466 ns | 0.0413 ns |  3.5123 ns | 1.000 |    0.02 |      - |         - |          NA |
+| OneOf_SuccessOrFailure_SwitchCase_Value               |  5.8254 ns | 0.1374 ns | 0.1786 ns |  5.7972 ns | 1.662 |    0.05 | 0.0029 |      24 B |          NA |
+| OneOfTrueFalse_TryGetAsTrue                           |  6.7111 ns | 0.1740 ns | 0.3226 ns |  6.6231 ns | 1.915 |    0.09 | 0.0076 |      64 B |          NA |
+| OneOf_OneOfT8_SwitchCase_Value                        |  8.3716 ns | 0.2069 ns | 0.4671 ns |  8.2768 ns | 2.389 |    0.14 | 0.0076 |      64 B |          NA |
+| OneOf_OneOfT8_TryGetAs                                | 10.9138 ns | 0.2539 ns | 0.2494 ns | 10.9407 ns | 3.114 |    0.08 | 0.0076 |      64 B |          NA |
+| Dunet_TrueFalse_MatchTrue                             | 19.4857 ns | 0.4307 ns | 0.5448 ns | 19.2483 ns | 5.560 |    0.17 | 0.0210 |     176 B |          NA |
+
 
 #### Enhanced benchmarks
+More operations per invoke to return some more useful data.
 
-| Method                                                  |      Mean |     Error |    StdDev |   Gen0 | Allocated |
-|---------------------------------------------------------|----------:|----------:|----------:|-------:|----------:|
-| AterraEngineUnions_UnionT8_SwitchCase_Value_Enhanced    |  8.161 ns | 0.1571 ns | 0.1312 ns |      - |         - |
-| AterraEngineUnions_UnionT8_TryGetAs_Enhanced            | 15.817 ns | 0.2973 ns | 0.2781 ns |      - |         - |
-| AterraEngineUnions_RefUnionT8_SwitchCase_Value_Enhanced | 17.382 ns | 0.3451 ns | 0.3389 ns | 0.0043 |      72 B |
-| OneOf_OneOfT8_SwitchCase_Value_Enhanced                 | 18.630 ns | 0.3602 ns | 0.3699 ns | 0.0038 |      64 B |
-| AterraEngineUnions_RefUnionT8_TryGetAs_Enhanced         | 20.968 ns | 0.1666 ns | 0.1559 ns | 0.0043 |      72 B |
-| OneOf_OneOfT8_TryGetAs_Enhanced                         | 30.125 ns | 0.5904 ns | 0.6318 ns | 0.0038 |      64 B |
+| Method                                                  |      Mean |     Error |    StdDev |    Median |   Gen0 | Allocated |
+|---------------------------------------------------------|----------:|----------:|----------:|----------:|-------:|----------:|
+| AterraEngineUnions_UnionT8_SwitchCase_Value_Enhanced    |  6.570 ns | 0.1246 ns | 0.1484 ns |  6.546 ns | 0.0000 |         - |
+| AterraEngineUnions_UnionT8_TryGetAs_Enhanced            | 12.463 ns | 0.2353 ns | 0.2201 ns | 12.380 ns | 0.0000 |         - |
+| AterraEngineUnions_RefUnionT8_SwitchCase_Value_Enhanced | 14.122 ns | 0.3017 ns | 0.8800 ns | 14.111 ns | 0.0086 |      72 B |
+| OneOf_OneOfT8_SwitchCase_Value_Enhanced                 | 15.656 ns | 0.3073 ns | 0.3155 ns | 15.679 ns | 0.0077 |      64 B |
+| AterraEngineUnions_RefUnionT8_TryGetAs_Enhanced         | 16.210 ns | 0.3223 ns | 0.5295 ns | 15.958 ns | 0.0086 |      72 B |
+| OneOf_OneOfT8_TryGetAs_Enhanced                         | 24.493 ns | 0.4747 ns | 0.6004 ns | 24.766 ns | 0.0077 |      64 B |
+
+#### Recursive Benchmarks
+Used to view the impact of ref Unions versus value Unions.
+
 

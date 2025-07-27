@@ -26,6 +26,7 @@ public class DiscriminatedUnionsBenchmark {
         return null;
     }
 
+    // ReSharper disable once UnusedVariable
     [Benchmark]
     public Success<string>? AterraEngineUnions_SuccessOrFailure_SwitchCase_Struct() {
         SuccessOrFailure<string, None> union = new Success<string>("Something as success");

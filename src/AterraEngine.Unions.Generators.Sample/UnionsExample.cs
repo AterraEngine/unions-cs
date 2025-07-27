@@ -20,4 +20,4 @@ namespace AterraEngine.Unions.Generators.Sample;
 // }
 
 
-public partial record RecordUnion() : IUnion<int, string> { }
+public partial record RecordUnion : IUnion<int, string>;

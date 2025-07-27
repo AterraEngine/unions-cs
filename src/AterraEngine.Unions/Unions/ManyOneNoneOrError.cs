@@ -25,6 +25,5 @@ public readonly partial struct ManyOneNoneOrError<TValue, TError>() : IUnion<Man
 /// - An error state, represented by the Error state containing a value of type TError.
 /// </summary>
 /// <typeparam name="TValue">The type of value(s) contained in the Many or One states.</typeparam>
-/// <typeparam name="TError">The type of the error value contained in the Error state.</typeparam>
 [UnionExtra(UnionExtra.GenerateAsValue)]
 public readonly partial struct ManyOneNoneOrError<TValue>() : IUnion<Many<TValue>, One<TValue>, None, Error<string>>;
