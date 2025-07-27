@@ -19,7 +19,7 @@ public record UnionObject(
     ImmutableArray<string> TypeParameters,
     bool IsRecord,
     bool IsStruct,
-    int extraGeneratorFlags
+    int ExtraGeneratorFlags
 ) {
 
     /// <summary>
@@ -29,8 +29,8 @@ public record UnionObject(
         ? $"{StructName}<{string.Join(", ", TypeParameters)}>"
         : StructName;
 
-    public bool HasFlagGenerateFrom() => (extraGeneratorFlags & 0b1) != 0;
-    public bool HasFlagGenerateAsValue() => (extraGeneratorFlags & 0b10) != 0;
+    public bool HasFlagGenerateFrom() => (ExtraGeneratorFlags & 0b1) != 0;
+    public bool HasFlagGenerateAsValue() => (ExtraGeneratorFlags & 0b10) != 0;
 
     public static bool IsValidGenerateAsValue(ITypeSymbol typeSymbol, out bool isValues, out string valueTypeName, out string notNullWhen, out string nullable, out string validIfTrue) {
         // Check if the typeSymbol inherits from IValue<T> or IValues<T>
