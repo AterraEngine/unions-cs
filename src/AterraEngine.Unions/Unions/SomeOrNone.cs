@@ -30,8 +30,7 @@ public readonly partial struct SomeOrNone<T>() : IUnion<Some<T>, None> {
     /// <param name="value">The nullable array to be converted.</param>
     /// <returns>
     ///     A <see cref="SomeOrNone{T}" /> instance that represents the provided array.
-    ///     If the array is null or empty, a `None` instance is returned. Otherwise, a `Some
-    ///     <T>` instance containing the array is returned.
+    ///     If the array is null or empty, a `None` instance is returned. Otherwise, a `SomeT` instance containing the array is returned.
     /// </returns>
     public static implicit operator SomeOrNone<T>(T[]? value) {
         if (value is null) return new None();

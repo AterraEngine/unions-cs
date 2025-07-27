@@ -25,9 +25,6 @@ public class DiscriminatedUnionsBenchmarkRecursiveReturns {
         "This is an even longer string intended to test performance when working with values " +
         "of significant length that exceed normal expected sizes.",
 
-        // A string with whitespace and special characters
-        "This string includes whitespace, numbers (12345), and special characters !@#$%^&*().",
-
         // A very large string for stress testing (e.g., more than 256 bytes)
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor " +
         "incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud " +

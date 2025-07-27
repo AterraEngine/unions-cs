@@ -116,19 +116,19 @@ public class UnionTests
         // Act
         int result1 = union1.Match(
             t0 => t0 * 2,
-            t1 => t1!.Length,
+            t1 => t1.Length,
             t2 => t2 ? 1 : 0
         );
 
         int result2 = union2.Match(
             t0 => t0 * 2,
-            t1 => t1!.Length,
+            t1 => t1.Length,
             t2 => t2 ? 1 : 0
         );
 
         int result3 = union3.Match(
             t0 => t0 * 2,
-            t1 => t1!.Length,
+            t1 => t1.Length,
             t2 => t2 ? 1 : 0
         );
 
@@ -147,7 +147,7 @@ public class UnionTests
         // Act
         int result = await union.MatchAsync(
             async t0 => await Task.FromResult(t0 * 3),
-            async t1 => await Task.FromResult(t1!.Length),
+            async t1 => await Task.FromResult(t1.Length),
             async t2 => await Task.FromResult(t2 ? 1 : 0)
         );
 
