@@ -16,11 +16,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{E511
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmarks.AterraEngine.Unions", "tests\Benchmarks.AterraEngine.Unions\Benchmarks.AterraEngine.Unions.csproj", "{54D8E2F4-D42C-454C-9C07-0EB4BC0B8036}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{BBCA14D3-A8A1-4537-BD8C-C9C97DAF1F33}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools.AterraEngine.Unions", "src\Tools.AterraEngine.Unions\Tools.AterraEngine.Unions.csproj", "{3824A99F-DD8B-4699-A51A-D5260996D4B0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.AterraEngine.Unions.Lib", "tests\Tests.AterraEngine.Unions.Lib\Tests.AterraEngine.Unions.Lib.csproj", "{ABEF77F1-1AA3-4FA3-83FD-E2B1FB790E86}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".dev-tools", ".dev-tools", "{BFCC4659-5D59-4905-B4E3-C80DD442FC30}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "github", "github", "{74DFCBE4-BEF5-40C0-AE2A-2EE26368D171}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\release.yml = .github\workflows\release.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +38,9 @@ Global
 		{A3CD7055-298F-4EDC-87C0-5553AD4D75A0} = {CA995D89-7F17-447F-937D-83CAAD577437}
 		{FE770A7D-C5BC-4718-90C2-571EBA157CD7} = {E5117976-3EEF-4A2B-8A65-B7CCDEF6716A}
 		{54D8E2F4-D42C-454C-9C07-0EB4BC0B8036} = {CA995D89-7F17-447F-937D-83CAAD577437}
-		{3824A99F-DD8B-4699-A51A-D5260996D4B0} = {BBCA14D3-A8A1-4537-BD8C-C9C97DAF1F33}
 		{ABEF77F1-1AA3-4FA3-83FD-E2B1FB790E86} = {CA995D89-7F17-447F-937D-83CAAD577437}
+		{3824A99F-DD8B-4699-A51A-D5260996D4B0} = {BFCC4659-5D59-4905-B4E3-C80DD442FC30}
+		{74DFCBE4-BEF5-40C0-AE2A-2EE26368D171} = {BFCC4659-5D59-4905-B4E3-C80DD442FC30}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C27CF889-6010-4550-8DE8-F913D1140029}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
