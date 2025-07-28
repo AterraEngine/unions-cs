@@ -6,11 +6,6 @@
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
 
-        <!-- Native AOT compatibility -->
-        <IsAotCompatible>true</IsAotCompatible>
-        <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
-        <EnableSingleFileAnalyzer>true</EnableSingleFileAnalyzer>
-
         <IsPackable>true</IsPackable>
         <PackageId>AterraEngine.Unions</PackageId> <!-- Main package name -->
         <Version>6.0.0</Version> <!-- Package version -->
@@ -25,10 +20,6 @@
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageIcon>icon.png</PackageIcon>
-    </PropertyGroup>
-    
-    <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0' OR '$(TargetFramework)' == 'net9.0'">
-        <IsTrimmable>true</IsTrimmable>
     </PropertyGroup>
 
 
