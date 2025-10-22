@@ -47,7 +47,7 @@ public class UnionAliasesAttributeTest {
 
         // Assert
         foreach (string? alias in attribute.Aliases) {
-            await Assert.That(alias).IsNullOrWhitespace();
+            await Assert.That(alias).IsNullOrWhiteSpace();
         }
     }
 
