@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="BenchmarkDotNet" Version="0.15.4" />
+        <PackageReference Include="BenchmarkDotNet" Version="0.15.5" />
         <PackageReference Include="Dunet" Version="1.11.3" />
         <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="4.14.0">
             <PrivateAssets>all</PrivateAssets>
