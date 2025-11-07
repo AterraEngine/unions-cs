@@ -115,7 +115,7 @@ public class TrueOrFalseTests {
 
         // Assert
         await Assert.That(result).IsFalse();
-        await Assert.That(value).IsEqualTo(default);
+        await Assert.That(value).IsEqualTo(default(True));
     }
 
     [Test]
@@ -140,7 +140,7 @@ public class TrueOrFalseTests {
 
         // Assert
         await Assert.That(result).IsFalse();
-        await Assert.That(value).IsEqualTo(default);
+        await Assert.That(value).IsEqualTo(default(False));
     }
 
     [Test]
