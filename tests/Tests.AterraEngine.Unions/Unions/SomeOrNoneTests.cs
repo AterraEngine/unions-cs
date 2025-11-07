@@ -108,7 +108,7 @@ public class SomeOrNoneTests {
 
         // Assert
         await Assert.That(result).IsFalse();
-        await Assert.That(some).IsEqualTo(default);
+        await Assert.That(some).IsEqualTo(default(Some<int>));
     }
 
     [Test]
@@ -134,7 +134,7 @@ public class SomeOrNoneTests {
 
         // Assert
         await Assert.That(result).IsFalse();
-        await Assert.That(none).IsEqualTo(default);
+        await Assert.That(none).IsEqualTo(default(None));
     }
 
     [Test]

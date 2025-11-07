@@ -122,8 +122,8 @@ public class ManyOneNoneOrErrorTests {
 
         // Assert
         await Assert.That(success).IsFalse();
-        await Assert.That(result).IsEqualTo(default);
-        await Assert.That(result).IsEqualTo(default);
+        await Assert.That(result).IsEqualTo(default(Many<int>));
+        await Assert.That(result).IsEqualTo(default(Many<int>));
     }
 
     [Test]
@@ -136,7 +136,7 @@ public class ManyOneNoneOrErrorTests {
 
         // Assert
         await Assert.That(success).IsFalse();
-        await Assert.That(result).IsEqualTo(default);
+        await Assert.That(result).IsEqualTo(default(One<int>));
     }
 
     [Test]
