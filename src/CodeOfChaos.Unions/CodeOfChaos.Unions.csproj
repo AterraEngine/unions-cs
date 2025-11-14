@@ -8,7 +8,7 @@
 
         <IsPackable>true</IsPackable>
         <PackageId>CodeOfChaos.Unions</PackageId> <!-- Main package name -->
-        <Version>6.1.0</Version> <!-- Package version -->
+        <Version>6.2.0</Version> <!-- Package version -->
         <Authors>Anna Sas</Authors>
         <Description>A small package allowing you to use Union Structs</Description>
         <PackageProjectUrl>https://github.com/code-of-chaos/cs-code_of_chaos-unions</PackageProjectUrl>
