@@ -19,7 +19,7 @@
         <Version>6.1.0</Version>
         <Authors>Anna Sas</Authors>
         <Description>The Source Generator for CodeOfChaos.Unions</Description>
-        <PackageProjectUrl>https://github.com/CodeOfChaos/unions-cs/</PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/code-of-chaos/cs-code_of_chaos-unions</PackageProjectUrl>
         <PackageTags>discriminated unions;rosyln;generator</PackageTags>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
