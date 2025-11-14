@@ -10,10 +10,10 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v4
+              uses: actions/checkout@v5
 
             - name: Setup .NET
-              uses: actions/setup-dotnet@v4
+              uses: actions/setup-dotnet@v5
               with:
                  dotnet-version: |
                   8.x
@@ -21,10 +21,10 @@ jobs:
                   10.x
 
             - name: Restore dependencies
-              run: dotnet restore Unions.slnx
+              run: dotnet restore CodeOfChaos.Unions.slnx
 
             - name: Build
-              run: dotnet build Unions.slnx --configuration Release --no-restore
+              run: dotnet build CodeOfChaos.Unions.slnx --configuration Release --no-restore
             
             - name: Run tests
-              run: dotnet test --solution Unions.slnx --configuration Release --no-restore --no-build
+              run: dotnet test --solution CodeOfChaos.Unions.slnx --configuration Release --no-restore --no-build
