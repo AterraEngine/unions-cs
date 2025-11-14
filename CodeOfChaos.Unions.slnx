@@ -1,0 +1,23 @@
+﻿<Solution>
+  <Folder Name="/.dev-tools/">
+    <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
+    <Project Path="src/Tools.CodeOfChaos.Unions/Tools.CodeOfChaos.Unions.csproj" />
+  </Folder>
+  <Folder Name="/.dev-tools/github/">
+    <File Path=".github/workflows/onPullRequest-TestDotnet.yml" />
+    <File Path=".github/workflows/release.yml" />
+  </Folder>
+  <Folder Name="/samples/">
+    <Project Path="src/CodeOfChaos.Unions.Generators.Sample/CodeOfChaos.Unions.Generators.Sample.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/CodeOfChaos.Unions.Generators/CodeOfChaos.Unions.Generators.csproj" />
+    <Project Path="src/CodeOfChaos.Unions/CodeOfChaos.Unions.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Benchmarks.CodeOfChaos.Unions/Benchmarks.CodeOfChaos.Unions.csproj" />
+    <Project Path="tests/Tests.CodeOfChaos.Unions.Lib/Tests.CodeOfChaos.Unions.Lib.csproj" />
+    <Project Path="tests/Tests.CodeOfChaos.Unions/Tests.CodeOfChaos.Unions.csproj" />
+  </Folder>
+</Solution>

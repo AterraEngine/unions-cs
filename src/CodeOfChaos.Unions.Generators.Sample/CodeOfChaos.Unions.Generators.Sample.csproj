@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\CodeOfChaos.Unions.Generators\CodeOfChaos.Unions.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
+
+        <!-- Ugly, but this is because of some weirdness with how analyzers are imported through a project reference -->
+        <Analyzer Include="$(PkgCodeOfChaos_GeneratorTools)\lib\netstandard2.0\*.dll" />
+        <ProjectReference Include="..\CodeOfChaos.Unions\CodeOfChaos.Unions.csproj" />
+    </ItemGroup>
+</Project>
