@@ -10,7 +10,7 @@ public sealed partial record RefUnion<T0>
     : IUnion<T0>;
 
 [UnionAliases("T0", "T1")]
-public sealed partial record RefUnion<T0, T1>
+public sealed partial record RefUnion<T0, T1> 
     : IUnion<T0, T1>;
 
 [UnionAliases("T0", "T1", "T2")]

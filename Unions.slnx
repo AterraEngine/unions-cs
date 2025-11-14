@@ -1,0 +1,23 @@
+<Solution>
+  <Folder Name="/.dev-tools/">
+    <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
+    <Project Path="src/Tools.AterraEngine.Unions/Tools.AterraEngine.Unions.csproj" />
+  </Folder>
+  <Folder Name="/.dev-tools/github/">
+    <File Path=".github/workflows/onPullRequest-TestDotnet.yml" />
+    <File Path=".github/workflows/release.yml" />
+  </Folder>
+  <Folder Name="/samples/">
+    <Project Path="src/AterraEngine.Unions.Generators.Sample/AterraEngine.Unions.Generators.Sample.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/AterraEngine.Unions.Generators/AterraEngine.Unions.Generators.csproj" />
+    <Project Path="src/AterraEngine.Unions/AterraEngine.Unions.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Benchmarks.AterraEngine.Unions/Benchmarks.AterraEngine.Unions.csproj" />
+    <Project Path="tests/Tests.AterraEngine.Unions.Lib/Tests.AterraEngine.Unions.Lib.csproj" />
+    <Project Path="tests/Tests.AterraEngine.Unions/Tests.AterraEngine.Unions.csproj" />
+  </Folder>
+</Solution>

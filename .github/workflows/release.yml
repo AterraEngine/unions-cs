@@ -22,15 +22,16 @@ jobs:
                   dotnet-version: |
                     8.x
                     9.x
+                    10.x
 
             - name: Restore dependencies
-              run: dotnet restore Unions.sln
+              run: dotnet restore Unions.slnx
 
             - name: Build
-              run: dotnet build Unions.sln --configuration Release --no-restore
+              run: dotnet build Unions.slnx --configuration Release --no-restore
 
             - name: Run tests
-              run: dotnet test Unions.sln --configuration Release --no-restore --no-build
+              run: dotnet test --solution Unions.slnx --configuration Release --no-restore --no-build
                         
             - name: Publish to NuGet
               env:
