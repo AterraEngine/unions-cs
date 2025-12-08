@@ -4,7 +4,7 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="BenchmarkDotNet" Version="0.15.6" />
+    <PackageVersion Include="BenchmarkDotNet" Version="0.15.8" />
     <PackageVersion Include="CodeOfChaos.CliArgsParser.Library" Version="5.1.3" />
     <PackageVersion Include="CodeOfChaos.GeneratorTools" Version="2.2.1" />
     <PackageVersion Include="Dunet" Version="1.11.3" />
