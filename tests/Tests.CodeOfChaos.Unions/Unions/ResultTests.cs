@@ -21,7 +21,7 @@ public class ResultTests {
         // Assert
         await Assert.That(isState).IsTrue();
         await Assert.That(isError).IsFalse();
-        await Assert.That(value).IsEqualTo(true);
+        await Assert.That(value).IsTypeOf<bool>().And.IsTrue();
     }
 
     [Test]

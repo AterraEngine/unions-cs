@@ -16,7 +16,7 @@
         
         <!-- Package metadata -->
         <PackageId>CodeOfChaos.Unions.Generators</PackageId>
-        <Version>6.4.0</Version>
+        <Version>6.5.0</Version>
         <Authors>Anna Sas</Authors>
         <Description>The Source Generator for CodeOfChaos.Unions</Description>
         <PackageProjectUrl>https://github.com/code-of-chaos/cs-code_of_chaos-unions</PackageProjectUrl>

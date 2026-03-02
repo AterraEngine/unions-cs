@@ -74,7 +74,7 @@ public class UnionTests
         await Assert.That(isT0).IsFalse();
         await Assert.That(isT1).IsFalse();
         await Assert.That(isT2).IsTrue();
-        await Assert.That(value).IsEqualTo(true);
+        await Assert.That(value).IsTypeOf<bool>().And.IsTrue();
     }
 
     [Test]
