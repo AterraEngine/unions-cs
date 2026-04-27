@@ -7,9 +7,30 @@ on:
     workflow_dispatch:
 
 jobs:
-    build:
+    tests-python:
+        name: Python Tests
         runs-on: ubuntu-latest
-        
+
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v6
+
+            -   name: Setup Python
+                uses: actions/setup-python@v6
+                with:
+                    python-version: '3.x'
+
+            -   name: Install Test Deps
+                run: |
+                    python -m pip install --upgrade pip
+                    python -m pip install pytest
+
+            -   name: Run Pytest
+                run: python -m pytest .github/scripts -q
+
+    test-dotnet:
+        runs-on: ubuntu-latest
+
         steps:
             -   name: Checkout repository
                 uses: actions/checkout@v6
@@ -29,5 +50,5 @@ jobs:
                 run: dotnet build CodeOfChaos.Unions.Testing.slnf --configuration Release --no-restore
 
             -   name: Run tests
-                run: dotnet test --solution CodeOfChaos.Unions.Testing.slnf --configuration Release --no-restore --no-build
+                run: dotnet test CodeOfChaos.Unions.Testing.slnf --configuration Release --no-restore --no-build
               
