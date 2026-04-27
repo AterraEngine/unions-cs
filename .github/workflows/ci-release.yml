@@ -75,7 +75,7 @@ jobs:
                 run: dotnet build CodeOfChaos.Unions.Testing.slnf --configuration Release --no-restore
 
             -   name: Run tests
-                run: dotnet test CodeOfChaos.Unions.Testing.slnf --configuration Release --no-restore --no-build
+                run: dotnet test --solution CodeOfChaos.Unions.Testing.slnf --configuration Release --no-restore --no-build
     
     bump-version:
         name: Bump Version
