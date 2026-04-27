@@ -74,9 +74,6 @@ def main() -> int:
     if not FILE.exists():
         fail(f"Error: File not found: {FILE}")
 
-    if not CMAKE_FILE.exists():
-        fail(f"Error: File not found: {CMAKE_FILE}")
-
     tree = Et.parse(FILE)
     root = tree.getroot()
 
