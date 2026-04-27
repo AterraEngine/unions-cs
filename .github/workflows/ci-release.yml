@@ -151,6 +151,7 @@ jobs:
                     fi
     
     release:
+        name: Release
         runs-on: ubuntu-latest
         needs: [ tests-python, test-dotnet, bump-version ]
         
