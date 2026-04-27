@@ -1,23 +1,32 @@
 ﻿<Solution>
   <Folder Name="/.dev-tools/">
+    <File Path="CodeOfChaos.Unions.Release.slnf" />
+    <File Path="CodeOfChaos.Unions.Testing.slnf" />
     <File Path="Directory.Packages.props" />
     <File Path="global.json" />
-    <Project Path="src/Tools.CodeOfChaos.Unions/Tools.CodeOfChaos.Unions.csproj" />
   </Folder>
   <Folder Name="/.dev-tools/github/">
-    <File Path=".github/workflows/onPullRequest-TestDotnet.yml" />
-    <File Path=".github/workflows/release.yml" />
+    <File Path=".github/dependabot.yml" />
   </Folder>
-  <Folder Name="/samples/">
-    <Project Path="src/CodeOfChaos.Unions.Generators.Sample/CodeOfChaos.Unions.Generators.Sample.csproj" />
+  <Folder Name="/.dev-tools/github/scripts/">
+    <File Path=".github/scripts/bump_version.py" />
+    <File Path=".github/scripts/test_bump_version.py" />
+  </Folder>
+  <Folder Name="/.dev-tools/github/workflows/">
+    <File Path=".github/workflows/ci-testing.yml" />
+    <File Path=".github/workflows/ci-release.yml" />
+  </Folder>
+  <Folder Name="/examples/">
+    <Project Path="examples/CodeOfChaosExample.Unions.Generators/CodeOfChaosExample.Unions.Generators.csproj" />
   </Folder>
   <Folder Name="/src/">
+    <File Path="src/Directory.Build.props" />
     <Project Path="src/CodeOfChaos.Unions.Generators/CodeOfChaos.Unions.Generators.csproj" />
     <Project Path="src/CodeOfChaos.Unions/CodeOfChaos.Unions.csproj" />
   </Folder>
   <Folder Name="/tests/">
-    <Project Path="tests/Benchmarks.CodeOfChaos.Unions/Benchmarks.CodeOfChaos.Unions.csproj" />
-    <Project Path="tests/Tests.CodeOfChaos.Unions.Lib/Tests.CodeOfChaos.Unions.Lib.csproj" />
-    <Project Path="tests/Tests.CodeOfChaos.Unions/Tests.CodeOfChaos.Unions.csproj" />
+    <Project Path="tests/CodeOfChaosBenchmarks.Unions/CodeOfChaosBenchmarks.Unions.csproj" />
+    <Project Path="tests/CodeOfChaosTests.Unions.Lib/CodeOfChaosTests.Unions.Lib.csproj" />
+    <Project Path="tests/CodeOfChaosTests.Unions/CodeOfChaosTests.Unions.csproj" />
   </Folder>
 </Solution>

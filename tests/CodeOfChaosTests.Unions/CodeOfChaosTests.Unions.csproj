@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+        <LangVersion>Latest</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="JetBrains.Annotations" />
+        <PackageReference Include="TUnit" />
+        <PackageReference Include="Polyfill" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\CodeOfChaos.Unions.Generators\CodeOfChaos.Unions.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
+        <ProjectReference Include="..\..\src\CodeOfChaos.Unions\CodeOfChaos.Unions.csproj"/>
+        <ProjectReference Include="..\CodeOfChaosTests.Unions.Lib\CodeOfChaosTests.Unions.Lib.csproj" />
+    </ItemGroup>
+
+</Project>

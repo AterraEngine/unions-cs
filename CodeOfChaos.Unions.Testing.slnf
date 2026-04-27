@@ -1,0 +1,12 @@
+﻿{
+  "solution": {
+    "path": "CodeOfChaos.Unions.slnx",
+    "projects": [
+        "src\\CodeOfChaos.Unions.Generators\\CodeOfChaos.Unions.Generators.csproj",
+        "src\\CodeOfChaos.Unions\\CodeOfChaos.Unions.csproj",
+        "tests\\CodeOfChaosBenchmarks.Unions\\CodeOfChaosBenchmarks.Unions.csproj",
+        "tests\\CodeOfChaosTests.Unions.Lib\\CodeOfChaosTests.Unions.Lib.csproj",
+        "tests\\CodeOfChaosTests.Unions\\CodeOfChaosTests.Unions.csproj"
+    ]
+  }
+}

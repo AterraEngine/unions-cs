@@ -1,0 +1,9 @@
+﻿{
+  "solution": {
+    "path": "CodeOfChaos.Unions.slnx",
+    "projects": [
+        "src\\CodeOfChaos.Unions.Generators\\CodeOfChaos.Unions.Generators.csproj",
+        "src\\CodeOfChaos.Unions\\CodeOfChaos.Unions.csproj",
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+﻿name: Dotnet Testing
+
+on:
+    pull_request:
+        types: [ opened, synchronize, reopened, ready_for_review ]
+        branches: [ core ]
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        
+        steps:
+            -   name: Checkout repository
+                uses: actions/checkout@v6
+
+            -   name: Setup .NET
+                uses: actions/setup-dotnet@v5
+                with:
+                    dotnet-version: |
+                        8.x
+                        9.x
+                        10.x
+
+            -   name: Restore dependencies
+                run: dotnet restore CodeOfChaos.Unions.Testing.slnf
+
+            -   name: Build
+                run: dotnet build CodeOfChaos.Unions.Testing.slnf --configuration Release --no-restore
+
+            -   name: Run tests
+                run: dotnet test --solution CodeOfChaos.Unions.Testing.slnf --configuration Release --no-restore --no-build
+              

@@ -2,33 +2,9 @@
 
     <PropertyGroup>
         <TargetFrameworks>netstandard2.0;net8.0;net9.0;net10.0</TargetFrameworks>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <LangVersion>latest</LangVersion>
-
-        <IsPackable>true</IsPackable>
         <PackageId>CodeOfChaos.Unions</PackageId> <!-- Main package name -->
-        <Version>6.6.0</Version> <!-- Package version -->
-        <Authors>Anna Sas</Authors>
-        <Description>A small package allowing you to use Union Structs</Description>
-        <PackageProjectUrl>https://github.com/code-of-chaos/cs-code_of_chaos-unions</PackageProjectUrl>
-        <PackageTags>discriminated unions</PackageTags>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PublishRepositoryUrl>true</PublishRepositoryUrl>
-        <IncludeSymbols>true</IncludeSymbols>
-        <DebugType>embedded</DebugType>
-        <PackageLicenseFile>LICENSE</PackageLicenseFile>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageIcon>icon.png</PackageIcon>
     </PropertyGroup>
-
-
-    <ItemGroup>
-        <None Include="../../LICENSE" Pack="true" PackagePath="" Visible="false" />
-        <None Include="../../README.md" Pack="true" PackagePath="" />
-        <None Include="../../assets/icon.png" Pack="true" PackagePath="" Visible="false" />
-    </ItemGroup>
-
+    
     <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
         <!-- ProjectReference for the generator as an analyzer -->
         <PackageReference Include="IsExternalInit">

@@ -2,40 +2,15 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <IsPackable>true</IsPackable>
-        <Nullable>enable</Nullable>
-        <LangVersion>latest</LangVersion>
+        <PackageId>CodeOfChaos.Unions.Generators</PackageId> <!-- Main package name -->
 
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild> <!-- Generates a package at build -->
         <IncludeBuildOutput>false</IncludeBuildOutput> <!-- Do not include the generator as a lib dependency -->
         <IsDeveloperDependency>true</IsDeveloperDependency>
         <DevelopmentDependency>true</DevelopmentDependency>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <IsRoslynComponent>true</IsRoslynComponent>
         <NoWarn>NU5128</NoWarn>
-        
-        <!-- Package metadata -->
-        <PackageId>CodeOfChaos.Unions.Generators</PackageId>
-        <Version>6.6.0</Version>
-        <Authors>Anna Sas</Authors>
-        <Description>The Source Generator for CodeOfChaos.Unions</Description>
-        <PackageProjectUrl>https://github.com/code-of-chaos/cs-code_of_chaos-unions</PackageProjectUrl>
-        <PackageTags>discriminated unions;rosyln;generator</PackageTags>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PublishRepositoryUrl>true</PublishRepositoryUrl>
-        <IncludeSymbols>true</IncludeSymbols>
-        <DebugType>embedded</DebugType>
-        <PackageLicenseFile>LICENSE</PackageLicenseFile>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageIcon>icon.png</PackageIcon>
     </PropertyGroup>
-
-    <!-- Include external files -->
-    <ItemGroup>
-        <None Include="../../LICENSE" Pack="true" PackagePath="" Visible="false" />
-        <None Include="../../README.md" Pack="true" PackagePath="" Visible="false" />
-        <None Include="../../assets/icon.png" Pack="true" PackagePath="" Visible="false" />
-    </ItemGroup>
 
     <!-- Package dependencies -->
     <ItemGroup>
