@@ -1,4 +1,4 @@
-﻿name: Dotnet Testing
+﻿name: "CI: Testing"
 
 on:
     pull_request:
