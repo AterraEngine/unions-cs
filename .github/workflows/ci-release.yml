@@ -33,7 +33,7 @@ permissions:
 
 jobs:
     tests-python:
-        name: Python Tests
+        name: Python Testing
         runs-on: ubuntu-latest
         
         steps:
@@ -54,6 +54,7 @@ jobs:
                 run: python -m pytest .github/scripts -q
     
     test-dotnet:
+        name: .NET Testing
         runs-on: ubuntu-latest
         
         steps:
