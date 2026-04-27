@@ -9,7 +9,7 @@
         <Version>6.7.0</Version> 
         <Authors>Anna Sas</Authors>
         <Description>A small package allowing you to use Union Structs</Description>
-        <PackageProjectUrl>https://github.com/code-of-chaos/cs-code_of_chaos-unions</PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/code-of-chaos/CodeOfChaos.Unions</PackageProjectUrl>
         <PackageTags>discriminated unions</PackageTags>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
