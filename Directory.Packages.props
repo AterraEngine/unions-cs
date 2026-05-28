@@ -17,6 +17,6 @@
     <PackageVersion Include="OneOf" Version="3.0.271" />
     <PackageVersion Include="OneOf.SourceGenerator" Version="3.0.271" />
     <PackageVersion Include="TUnit" Version="1.45.22" />
-    <PackageVersion Include="Polyfill" Version="10.6.0" />
+    <PackageVersion Include="Polyfill" Version="10.7.0" />
   </ItemGroup>
 </Project>
