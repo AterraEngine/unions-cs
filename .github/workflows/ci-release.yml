@@ -38,7 +38,7 @@ jobs:
         
         steps:
             -   name: Checkout
-                uses: actions/checkout@v6
+                uses: actions/checkout@v7
 
             -   name: Setup Python
                 uses: actions/setup-python@v7
@@ -59,7 +59,7 @@ jobs:
         
         steps:
             -   name: Checkout repository
-                uses: actions/checkout@v6
+                uses: actions/checkout@v7
 
             -   name: Setup .NET
                 uses: actions/setup-dotnet@v6
@@ -92,7 +92,7 @@ jobs:
         
         steps:
             -   name: Checkout
-                uses: actions/checkout@v6
+                uses: actions/checkout@v7
                 with:
                     fetch-depth: 0
                     token: ${{ secrets.RELEASE_TOKEN }}
@@ -161,7 +161,7 @@ jobs:
         
         steps:
             -   name: Checkout
-                uses: actions/checkout@v6
+                uses: actions/checkout@v7
                 with:
                     ref: ${{ env.TAG }}
                     fetch-depth: 0
