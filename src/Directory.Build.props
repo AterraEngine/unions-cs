@@ -6,7 +6,7 @@
         <LangVersion>14.0</LangVersion>
 
         <IsPackable>true</IsPackable>
-        <Version>6.7.1</Version> 
+        <Version>6.8.0</Version> 
         <Authors>Anna Sas</Authors>
         <Description>A small package allowing you to use Union Structs</Description>
         <PackageProjectUrl>https://github.com/code-of-chaos/CodeOfChaos.Unions</PackageProjectUrl>
